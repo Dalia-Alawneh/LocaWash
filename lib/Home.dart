@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/Login.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
    Home({Key? key}) : super(key: key);
@@ -6,10 +7,18 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      child: Text('hello locaWash.',
+        child: FlatButton(
+          onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+            );
+          },
+          child: Text('hello locaWash.',
       style: TextStyle(
-        color: Color(style.primaryBlue)
+          color: Color(style.primaryBlue)
       ),),
+        ),
     );
   }
 }
