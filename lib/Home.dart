@@ -1,15 +1,139 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
-   Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
   final Style style = Style();
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      child: Text('hello locaWash.',
-      style: TextStyle(
-        color: Color(style.primaryBlue)
-      ),),
+    return  SafeArea(
+      child: Scaffold(
+        body: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(style.gradientTop),
+                    Color(style.gradientTop),
+                    Color(style.gradientCenter),
+                    Color(style.gradientCenter),
+                    Color(style.gradientCenter),
+                    Color(style.gradientBottom),
+
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0,0.1, 0.2,0.3,0.4,0.5]
+              ),
+
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+
+                    flex: 5,
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 60),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text('LOKAWASH',
+                              style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontSize: 40,
+                                fontWeight: FontWeight.w700
+                              ),
+                            ),
+                            Text('Best friend in cleanliness',
+                              style: TextStyle(
+                                color: Color(0xffdcd6d6)
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+
+                ),
+                Expanded(
+                    flex: 4,
+                    child: Container(
+                      color: Color(style.primaryBlue),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(60, 40,60,20),
+                        child: Column(
+                          children:  [
+                            Text('We have cleaned more than 10k+ cars',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 26
+                            ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text('Lorem ipsum dolor sit amet consectetur adipisicing elit. autem?',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                              color: Color(0xffdcd6d6),
+                              fontSize: 15,
+                                height: 1.5
+                            ),
+                            ),
+
+                            Container(
+                              margin: EdgeInsets.only(top: 45),
+                              decoration: BoxDecoration(
+                                color: Color(style.primaryPink),
+                                borderRadius: BorderRadius.circular(30)
+                              ),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+
+                                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
+                                ),
+                                onPressed: (){
+
+                                },
+
+                                child: Text('Login',
+                                style: TextStyle(
+                                    color: Color(0xffffffff),
+                                    fontSize: 20
+                                ),
+                              ),),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Don\'t have an account?',
+                                style: TextStyle(
+                                  color:Color(0xffffffff)
+                                ),
+                                ),
+                                TextButton(onPressed: (){},
+                                    child: Text('Register',
+                                    style: TextStyle(
+                                      color: Color(style.primaryPink)
+                                    ),
+                                    ))
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+
+                )
+              ],
+            )
+        ),
+      ),
     );
   }
 }
