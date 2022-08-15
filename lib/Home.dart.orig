@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
+<<<<<<< HEAD
+<<<<<<< HEAD
+   Home({key}) : super(key: key);
+=======
   Home({Key key}) : super(key: key);
+>>>>>>> 0b4c8ca4b4b5ea333fa33184f15f2f70beae610d
+=======
+  Home({Key key}) : super(key: key);
+>>>>>>> 0b4c8ca4b4b5ea333fa33184f15f2f70beae610d
   final Style style = Style();
 
   @override
