@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
+  Login({Key key}) : super(key: key);
   final Style style = Style();
   @override
   Widget build(BuildContext context) {
