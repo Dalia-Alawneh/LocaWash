@@ -1,15 +1,14 @@
-
 import 'package:flutter/material.dart';
-import 'package:locawash/Register.dart';
+import 'package:locawash/Login.dart';
 import 'style.dart';
-class Login extends StatefulWidget {
-  Login({key}) : super(key: key);
+class Register extends StatefulWidget {
+  Register({key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   final Style style = Style();
 
   bool _isObscure=true;
@@ -22,7 +21,7 @@ class _LoginState extends State<Login> {
         body: Column(
           children: <Widget> [
             Container(
-              height: 300,
+              height: 250,
               width: double.infinity,
               color: Color(0xff141C43),
               child: Column(
@@ -50,21 +49,33 @@ class _LoginState extends State<Login> {
             ),
 
             Container(
-                margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                child: Text('Let us help you clean your car so it looks like new',
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 25,
-                    height: 1.5,
-                    fontWeight: FontWeight.bold,
-                  ),)),
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: RichText(
+                  text: TextSpan(
+                      text: 'Join the ', style: TextStyle( fontSize: 24, fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold),
+                      children: <TextSpan>[
+                        TextSpan(text: 'LOCAWASH', style: TextStyle(fontFamily: 'Montserrat', color: Color(style.primaryPink), fontWeight: FontWeight.bold,)),
+                        TextSpan(text: ' family to make your life easier', style: TextStyle(fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold))
+                      ]
+                  ),
+                ),
+                ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'JhoneQwon@gmail.com',
+                  hintText: 'Enter your email',
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter your phone number',
                 ),
               ),
             ),
@@ -88,6 +99,26 @@ class _LoginState extends State<Login> {
                         })),
               ),
             ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+              child: TextField(
+                obscureText: _isObscure,
+                decoration: InputDecoration(
+                    hintText: 'Confirm your Password',
+                    border: OutlineInputBorder(),
+                    suffixIcon: IconButton(
+                        icon:
+                        Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                          color: Color(0xffF54168),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        })),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -95,42 +126,36 @@ class _LoginState extends State<Login> {
                 Row(
                   children: [
                     CheckBox(),
-                    Text('Remember Me!',
-                      style: TextStyle(
-                        // fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat-Bold',
-                        fontSize: 16,
-                      ),),
+                    RichText(
+                      text: TextSpan(
+                          text: 'I agree to the ', style: TextStyle( fontSize: 12, fontFamily: 'Montserrat-bold', color: Colors.black,),
+                          children: <TextSpan>[
+                            TextSpan(text: 'Terms ans Services', style: TextStyle(fontFamily: 'Montserrat-bold', color: Color(style.primaryPink),)),
+                            TextSpan(text: ' and', style: TextStyle(fontFamily: 'Montserrat-bold', color: Colors.black,)),
+                            TextSpan(text: ' Privacy Policy', style: TextStyle(fontFamily: 'Montserrat-bold', color: Color(style.primaryPink),))
+
+                          ]
+                      ),
+                    ),
                   ],
                 ),
                 ),
-                TextButton(
-                  onPressed: (){},
-                  child: Text('Forget password?',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontFamily: 'Montserrat-bold',
-                      fontSize: 16,
-                      color: Color(0xffF54168),
-                    ),),
-                )
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 15),
+              // margin: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
                   color: Color(style.primaryPink),
                   borderRadius: BorderRadius.circular(30)
               ),
               child: TextButton(
                 style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
+                    padding: EdgeInsets.symmetric(vertical:0,horizontal: 100)
                 ),
                 onPressed: (){
 
                 },
-
-                child: Text('Login',
+                child: Text('Create Account',
                   style: TextStyle(
                     color: Color(0xffffffff),
                     fontSize: 20,
@@ -142,7 +167,7 @@ class _LoginState extends State<Login> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Don\'t have an account?',
+                Text('Do you already have an account?',
                   style: TextStyle(
                     color:Colors.black,
                     fontFamily: 'Montserrat',
@@ -152,10 +177,10 @@ class _LoginState extends State<Login> {
                 TextButton(onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Register()),
+                    MaterialPageRoute(builder: (context) => Login()),
                   );
                 },
-                    child: Text('Register',
+                    child: Text('Login',
                       style: TextStyle(
                         color: Color(style.primaryPink),
                         fontFamily: 'Montserrat',
