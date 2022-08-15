@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
+<<<<<<< HEAD
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -8,6 +9,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+=======
+class Login extends StatelessWidget {
+  Login({Key key}) : super(key: key);
+>>>>>>> 0b4c8ca4b4b5ea333fa33184f15f2f70beae610d
   final Style style = Style();
 
   bool _isObscure=true;
