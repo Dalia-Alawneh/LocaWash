@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'Register.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
   Home({Key key}) : super(key: key);
@@ -30,7 +31,6 @@ class Home extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-
                     flex: 5,
                     child: Container(
                       child: Padding(
@@ -45,9 +45,14 @@ class Home extends StatelessWidget {
                                 fontWeight: FontWeight.w700
                               ),
                             ),
+                            SizedBox(
+                              height: 15,
+                            ),
                             Text('Best friend in cleanliness',
                               style: TextStyle(
-                                color: Color(0xffdcd6d6)
+                                color: Color(0xffdcd6d6),
+                                fontFamily: 'Montserrat-Bold',
+
                               ),
                             )
                           ],
@@ -60,74 +65,85 @@ class Home extends StatelessWidget {
                     flex: 4,
                     child: Container(
                       color: Color(style.primaryBlue),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(60, 40,60,20),
-                        child: Column(
-                          children:  [
-                            Text('We have cleaned more than 10k+ cars',
+                      child: Column(
+                        children:  [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(55, 40,55,0),
+                            child: Text('We have cleaned more than 10k+ cars',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Color(0xffffffff),
                               fontWeight: FontWeight.w600,
-                              fontSize: 26
+                              fontSize: 26,
+                              height: 1.5
                             ),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text('Lorem ipsum dolor sit amet consectetur adipisicing elit. autem?',
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(35,0,35,0),
+                            child: Text('Lorem ipsum dolor sit amet consectetur adipisicing elit. autem?',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                              color: Color(0xffdcd6d6),
+                              color: Color(0xf0cdc9c9),
                               fontSize: 15,
+                                fontFamily: 'Montserrat-Bold',
                                 height: 1.5
                             ),
                             ),
+                          ),
 
-                            Container(
-                              margin: EdgeInsets.only(top: 45),
-                              decoration: BoxDecoration(
-                                color: Color(style.primaryPink),
-                                borderRadius: BorderRadius.circular(30)
+                          Container(
+                            width: double.infinity,
+                            margin: EdgeInsets.fromLTRB(15,40,15,0),
+                            decoration: BoxDecoration(
+                              color: Color(style.primaryPink),
+                              borderRadius: BorderRadius.circular(30)
+                            ),
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+
+                                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
                               ),
-                              child: TextButton(
-                                style: TextButton.styleFrom(
+                              onPressed: (){
+                                Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=> Login()));
+                              },
 
-                                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
-                                ),
-                                onPressed: (){
-                                  Navigator.push(context,
-                                  MaterialPageRoute(builder: (context)=> Login()));
-                                },
+                              child: Text('Login',
+                              style: TextStyle(
+                                  color: Color(0xffffffff),
+                                  fontSize: 20,
+                                fontFamily: 'Montserrat-Bold',
+                                letterSpacing: 1.5
+                              ),
+                            ),),
+                          ),
 
-                                child: Text('Login',
-                                style: TextStyle(
-                                    color: Color(0xffffffff),
-                                    fontSize: 20
-                                ),
-                              ),),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Don\'t have an account?',
-                                style: TextStyle(
-                                  color:Color(0xffffffff)
-                                ),
-                                ),
-                                TextButton(onPressed: (){},
-                                    child: Text('Register',
-                                    style: TextStyle(
-                                      color: Color(style.primaryPink)
-                                    ),
-                                    ))
-                              ],
-                            )
-                          ],
-                        ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Don\'t have an account?',
+                              style: TextStyle(
+                                color: Color(0xf0cdc9c9),
+                                fontFamily: 'Montserrat-Bold',
+                              ),
+                              ),
+                              TextButton(onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
+                              },
+                                  child: Text('Register',
+                                  style: TextStyle(
+                                    color: Color(style.primaryPink),
+                                    fontFamily: 'Montserrat-Bold',
+
+                                  ),
+                                  ))
+                            ],
+                          )
+                        ],
                       ),
                     )
 
