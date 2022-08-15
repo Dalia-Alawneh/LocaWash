@@ -62,6 +62,9 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Bold'
+                ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'JhoneQwon@gmail.com',
@@ -71,6 +74,9 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Bold'
+                ),
                 obscureText: _isObscure,
                 decoration: InputDecoration(
                     hintText: 'Enter your Password',
