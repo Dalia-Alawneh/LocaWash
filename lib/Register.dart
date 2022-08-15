@@ -12,13 +12,14 @@ class _RegisterState extends State<Register> {
   final Style style = Style();
 
   bool _isObscure=true;
+  bool _confirmObscure=true;
 
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
+        body: ListView(
           children: <Widget> [
             Container(
               height: 250,
@@ -47,7 +48,6 @@ class _RegisterState extends State<Register> {
                   ]
               ),
             ),
-
             Container(
                 margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                 child: RichText(
@@ -60,10 +60,45 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 ),
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                    child: new TextField(
+                        style: TextStyle(
+                            fontFamily: 'Montserrat-Bold'
+                        ),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'First name',
+                      ),
+                    ),
+                  ),
+                ),
+                new Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: new TextField(
+                      style: TextStyle(
+                      fontFamily: 'Montserrat-Bold'
+                      ),
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Last name',
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.fromLTRB(20, 10,20,0),
               child: TextField(
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Bold'
+                ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter your email',
@@ -71,8 +106,11 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.fromLTRB(20, 10,20,0),
               child: TextField(
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Bold'
+                ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter your phone number',
@@ -80,8 +118,11 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: EdgeInsets.fromLTRB(20, 10,20,0),
               child: TextField(
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Bold'
+                ),
                 obscureText: _isObscure,
                 decoration: InputDecoration(
                     hintText: 'Enter your Password',
@@ -100,21 +141,24 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+              padding: EdgeInsets.fromLTRB(20, 10,20,0),
               child: TextField(
-                obscureText: _isObscure,
+                style: TextStyle(
+                  fontFamily: 'Montserrat-Bold'
+                ),
+                obscureText: _confirmObscure,
                 decoration: InputDecoration(
                     hintText: 'Confirm your Password',
                     border: OutlineInputBorder(),
                     suffixIcon: IconButton(
                         icon:
                         Icon(
-                          _isObscure ? Icons.visibility : Icons.visibility_off,
+                          _confirmObscure ? Icons.visibility : Icons.visibility_off,
                           color: Color(0xffF54168),
                         ),
                         onPressed: () {
                           setState(() {
-                            _isObscure = !_isObscure;
+                            _confirmObscure = !_confirmObscure;
                           });
                         })),
               ),
@@ -143,14 +187,14 @@ class _RegisterState extends State<Register> {
               ],
             ),
             Container(
-              // margin: EdgeInsets.only(top: 15),
+              margin: EdgeInsets.fromLTRB(20,0,20,0),
               decoration: BoxDecoration(
                   color: Color(style.primaryPink),
                   borderRadius: BorderRadius.circular(30)
               ),
               child: TextButton(
                 style: TextButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical:0,horizontal: 100)
+
                 ),
                 onPressed: (){
 

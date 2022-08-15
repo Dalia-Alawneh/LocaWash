@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'Register.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
   Home({Key key}) : super(key: key);
@@ -96,7 +97,7 @@ class Home extends StatelessWidget {
 
                           Container(
                             width: double.infinity,
-                            margin: EdgeInsets.fromLTRB(15,30,15,0),
+                            margin: EdgeInsets.fromLTRB(15,40,15,0),
                             decoration: BoxDecoration(
                               color: Color(style.primaryPink),
                               borderRadius: BorderRadius.circular(30)
@@ -130,7 +131,9 @@ class Home extends StatelessWidget {
                                 fontFamily: 'Montserrat-Bold',
                               ),
                               ),
-                              TextButton(onPressed: (){},
+                              TextButton(onPressed: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
+                              },
                                   child: Text('Register',
                                   style: TextStyle(
                                     color: Color(style.primaryPink),
