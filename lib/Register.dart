@@ -18,7 +18,7 @@ class _RegisterState extends State<Register> {
     return  SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
+        body: ListView(
           children: <Widget> [
             Container(
               height: 250,
@@ -61,6 +61,36 @@ class _RegisterState extends State<Register> {
                 ),
                 ),
 
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                    child: new TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'First name',
+                      ),
+                    ),
+                  ),
+                ),
+                new Flexible(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: new TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Last name',
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
@@ -70,6 +100,7 @@ class _RegisterState extends State<Register> {
                 ),
               ),
             ),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: TextField(
@@ -200,7 +231,6 @@ class _RegisterState extends State<Register> {
 
 class CheckBox extends StatefulWidget {
   const CheckBox({key}) : super(key: key);
-
   @override
   State<CheckBox> createState() => _MyStatefulWidgetState();
 }
