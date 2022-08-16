@@ -3,7 +3,7 @@ import 'package:locawash/Login.dart';
 import 'Register.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
-  Home({Key key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
   final Style style = Style();
   Decoration homeContStyle()
   {
@@ -36,9 +36,9 @@ class Home extends StatelessWidget {
                           children: [
                             Text('LOKAWASH',
                               style: TextStyle(
-                                color: Color(0xffffffff),
-                                fontSize: 40,
-                                fontWeight: FontWeight.w700
+                                  color: Color(0xffffffff),
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w700
                               ),
                             ),
                             SizedBox(
@@ -66,13 +66,13 @@ class Home extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(55, 40,55,0),
                             child: Text('We have cleaned more than 10k+ cars',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontWeight: FontWeight.w600,
-                              fontSize: 26,
-                              height: 1.5
-                            ),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color(0xffffffff),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 26,
+                                  height: 1.5
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -83,11 +83,11 @@ class Home extends StatelessWidget {
                             child: Text('Lorem ipsum dolor sit amet consectetur adipisicing elit. autem?',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                              color: Color(0xf0cdc9c9),
-                              fontSize: 15,
-                                fontFamily: 'Montserrat-Bold',
-                                height: 1.5
-                            ),
+                                  color: Color(0xf0cdc9c9),
+                                  fontSize: 15,
+                                  fontFamily: 'Montserrat-Bold',
+                                  height: 1.5
+                              ),
                             ),
                           ),
 
@@ -95,47 +95,47 @@ class Home extends StatelessWidget {
                             width: double.infinity,
                             margin: EdgeInsets.fromLTRB(15,40,15,0),
                             decoration: BoxDecoration(
-                              color: Color(style.primaryPink),
-                              borderRadius: BorderRadius.circular(30)
+                                color: Color(style.primaryPink),
+                                borderRadius: BorderRadius.circular(30)
                             ),
                             child: TextButton(
                               style: TextButton.styleFrom(
 
-                                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
+                                  padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
                               ),
                               onPressed: (){
                                 Navigator.push(context,
-                                MaterialPageRoute(builder: (context)=> Login()));
+                                    MaterialPageRoute(builder: (context)=> Login()));
                               },
 
                               child: Text('Login',
-                              style: TextStyle(
-                                  color: Color(0xffffffff),
-                                  fontSize: 20,
-                                fontFamily: 'Montserrat-Bold',
-                                letterSpacing: 1.5
-                              ),
-                            ),),
+                                style: TextStyle(
+                                    color: Color(0xffffffff),
+                                    fontSize: 20,
+                                    fontFamily: 'Montserrat-Bold',
+                                    letterSpacing: 1.5
+                                ),
+                              ),),
                           ),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text('Don\'t have an account?',
-                              style: TextStyle(
-                                color: Color(0xf0cdc9c9),
-                                fontFamily: 'Montserrat-Bold',
-                              ),
+                                style: TextStyle(
+                                  color: Color(0xf0cdc9c9),
+                                  fontFamily: 'Montserrat-Bold',
+                                ),
                               ),
                               TextButton(onPressed: (){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
                               },
                                   child: Text('Register',
-                                  style: TextStyle(
-                                    color: Color(style.primaryPink),
-                                    fontFamily: 'Montserrat-Bold',
+                                    style: TextStyle(
+                                      color: Color(style.primaryPink),
+                                      fontFamily: 'Montserrat-Bold',
 
-                                  ),
+                                    ),
                                   ))
                             ],
                           )

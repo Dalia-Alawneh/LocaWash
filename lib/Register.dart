@@ -49,17 +49,17 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Container(
-                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-                child: RichText(
-                  text: TextSpan(
-                      text: 'Join the ', style: TextStyle( fontSize: 24, fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        TextSpan(text: 'LOCAWASH', style: TextStyle(fontFamily: 'Montserrat', color: Color(style.primaryPink), fontWeight: FontWeight.bold,)),
-                        TextSpan(text: ' family to make your life easier', style: TextStyle(fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold))
-                      ]
-                  ),
+              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              child: RichText(
+                text: TextSpan(
+                    text: 'Join the ', style: TextStyle( fontSize: 24, fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold),
+                    children: <TextSpan>[
+                      TextSpan(text: 'LOCAWASH', style: TextStyle(fontFamily: 'Montserrat', color: Color(style.primaryPink), fontWeight: FontWeight.bold,)),
+                      TextSpan(text: ' family to make your life easier', style: TextStyle(fontFamily: 'Montserrat', color: Colors.black, fontWeight: FontWeight.bold))
+                    ]
                 ),
-                ),
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -67,9 +67,9 @@ class _RegisterState extends State<Register> {
                   child: Padding(
                     padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                     child: new TextField(
-                        style: TextStyle(
-                            fontFamily: 'Montserrat-Bold'
-                        ),
+                      style: TextStyle(
+                          fontFamily: 'Montserrat-Bold'
+                      ),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'First name',
@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                     padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: new TextField(
                       style: TextStyle(
-                      fontFamily: 'Montserrat-Bold'
+                          fontFamily: 'Montserrat-Bold'
                       ),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -144,7 +144,7 @@ class _RegisterState extends State<Register> {
               padding: EdgeInsets.fromLTRB(20, 10,20,0),
               child: TextField(
                 style: TextStyle(
-                  fontFamily: 'Montserrat-Bold'
+                    fontFamily: 'Montserrat-Bold'
                 ),
                 obscureText: _confirmObscure,
                 decoration: InputDecoration(
@@ -271,10 +271,9 @@ class _MyStatefulWidgetState extends State<CheckBox> {
       value: isChecked,
       onChanged: (value) {
         setState(() {
-          isChecked = value;
+          isChecked = value!;
         });
       },
     );
   }
 }
-
