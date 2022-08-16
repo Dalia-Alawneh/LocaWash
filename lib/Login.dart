@@ -142,6 +142,7 @@ class _LoginState extends State<Login> {
                     fontSize: 20,
                     fontFamily: 'Montserrat',
                     fontWeight: FontWeight.bold,
+                    letterSpacing: 1.1
                   ),
                 ),),
             ),
