@@ -38,12 +38,12 @@ class _LoginState extends State<Login> {
                     ),
                     Text('Best friend in cleanliness',
                       style: TextStyle(
-                        fontFamily: 'Montserrat',
+                          color: Color(0xffdcd6d6),
+                          fontFamily: 'Montserrat',
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                         height: 1.5,
-                        color: Colors.white,
-                      ),)
+                      ),),
                   ]
               ),
             ),
@@ -124,6 +124,7 @@ class _LoginState extends State<Login> {
                 )
               ],
             ),
+
             Container(
               margin: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(

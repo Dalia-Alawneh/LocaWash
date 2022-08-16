@@ -5,28 +5,24 @@ import 'style.dart';
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   final Style style = Style();
+  Decoration homeContStyle()
+  {
+    Decoration containerStyle= BoxDecoration(
+        gradient: LinearGradient(
+        colors: style.gradientScreen(),
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    // stops: [0,0.1, 0.2,0.3,0.4,0.5]
+    ),
+    ) ;
+    return containerStyle;
+  }
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
         body: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: <Color>[
-                    Color(style.gradientTop),
-                    Color(style.gradientTop),
-                    Color(style.gradientCenter),
-                    Color(style.gradientCenter),
-                    Color(style.gradientCenter),
-                    Color(style.gradientBottom),
-
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0,0.1, 0.2,0.3,0.4,0.5]
-              ),
-
-            ),
+            decoration: homeContStyle(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
