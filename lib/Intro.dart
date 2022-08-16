@@ -7,7 +7,7 @@ import 'Login.dart';
 import 'Register.dart';
 
 class Intro extends StatefulWidget {
-   Intro({Key key}) : super(key: key);
+   Intro({Key ? key}) : super(key: key);
   @override
   State<Intro> createState() => _IntroState();
 }

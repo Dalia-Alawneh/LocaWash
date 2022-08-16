@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:locawash/Register.dart';
 import 'style.dart';
@@ -63,122 +62,122 @@ class _LoginState extends State<Login> {
                 key: _formKey,
                 child: Column(
                   children: [
-                  Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    style: TextStyle(
-                        fontFamily: 'Montserrat-Bold'
-                    ),
-                    decoration: InputDecoration(
-                        errorStyle: TextStyle(
-                          fontSize: 14.0,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: TextFormField(
+                        style: TextStyle(
                             fontFamily: 'Montserrat-Bold'
                         ),
-                      border: OutlineInputBorder(),
-                      hintText: 'JhoneQwon@gmail.com',
+                        decoration: InputDecoration(
+                          errorStyle: TextStyle(
+                              fontSize: 14.0,
+                              fontFamily: 'Montserrat-Bold'
+                          ),
+                          border: OutlineInputBorder(),
+                          hintText: 'JhoneQwon@gmail.com',
+                        ),
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return "email is required";
+                          }else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                            return "Please Enter a correct email";
+                          }else
+                            return null;
+                        },
+                      ),
                     ),
-                    validator: (value){
-                      if(value.isEmpty){
-                        return "email is required";
-                      }else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-                        return "Please Enter a correct email";
-                      }else
-                        return null;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: TextFormField(
-                    style: TextStyle(
-                        fontFamily: 'Montserrat-Bold'
-                    ),
-                    validator: (value){
-                      if(value.isEmpty){
-                        return "Password is required!";
-                      }else
-                        return null;
-                    },
-                    obscureText: _isObscure,
-                    decoration: InputDecoration(
-                        errorStyle: TextStyle(
-                            fontSize: 14.0,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: TextFormField(
+                        style: TextStyle(
                             fontFamily: 'Montserrat-Bold'
                         ),
-                        hintText: 'Enter your Password',
-                        border: OutlineInputBorder(),
-                        suffixIcon: IconButton(
-                            icon:
-                            Icon(
-                              _isObscure ? Icons.visibility : Icons.visibility_off,
-                              color: Color(0xffF54168),
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return "Password is required!";
+                          }else
+                            return null;
+                        },
+                        obscureText: _isObscure,
+                        decoration: InputDecoration(
+                            errorStyle: TextStyle(
+                                fontSize: 14.0,
+                                fontFamily: 'Montserrat-Bold'
                             ),
-                            onPressed: () {
-                              setState(() {
-                                _isObscure = !_isObscure;
-                              });
-                            })),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(child:
+                            hintText: 'Enter your Password',
+                            border: OutlineInputBorder(),
+                            suffixIcon: IconButton(
+                                icon:
+                                Icon(
+                                  _isObscure ? Icons.visibility : Icons.visibility_off,
+                                  color: Color(0xffF54168),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _isObscure = !_isObscure;
+                                  });
+                                })),
+                      ),
+                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CheckBox(),
-                        Text('Remember Me!',
-                          style: TextStyle(
-                            // fontWeight: FontWeight.bold,
-                            fontFamily: 'Montserrat-Bold',
-                            fontSize: 16,
-                          ),),
+                        Container(child:
+                        Row(
+                          children: [
+                            CheckBox(),
+                            Text('Remember Me!',
+                              style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                fontFamily: 'Montserrat-Bold',
+                                fontSize: 16,
+                              ),),
+                          ],
+                        ),
+                        ),
+
+                        TextButton(
+                          onPressed: (){
+
+                          },
+                          child: Text('Forget password?',
+                            style: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat-bold',
+                              fontSize: 16,
+                              color: Color(0xffF54168),
+                            ),),
+                        )
                       ],
                     ),
-                    ),
-
-                    TextButton(
-                      onPressed: (){
-
-                      },
-                      child: Text('Forget password?',
-                        style: TextStyle(
-                          // fontWeight: FontWeight.bold,
-                          fontFamily: 'Montserrat-bold',
-                          fontSize: 16,
-                          color: Color(0xffF54168),
-                        ),),
-                    )
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 15),
-                  decoration: BoxDecoration(
-                      color: Color(style.primaryPink),
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
-                    ),
-                    onPressed: (){
-                      if(!_formKey.currentState.validate()){
-                        return;
-                      }
-                    },
-
-                    child: Text('Login',
-                      style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontSize: 20,
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.1
+                    Container(
+                      margin: EdgeInsets.only(top: 15),
+                      decoration: BoxDecoration(
+                          color: Color(style.primaryPink),
+                          borderRadius: BorderRadius.circular(30)
                       ),
-                    ),),
-                ),
-              ],
-            )),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
+                        ),
+                        onPressed: (){
+                          if(!_formKey.currentState!.validate()){
+                            return;
+                          }
+                        },
+
+                        child: Text('Login',
+                          style: TextStyle(
+                              color: Color(0xffffffff),
+                              fontSize: 20,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.1
+                          ),
+                        ),),
+                    ),
+                  ],
+                )),
 
 
 
@@ -245,10 +244,9 @@ class _MyStatefulWidgetState extends State<CheckBox> {
       value: isChecked,
       onChanged: (value) {
         setState(() {
-          isChecked = value;
+          isChecked = value!;
         });
       },
     );
   }
 }
-
