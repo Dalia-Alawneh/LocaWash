@@ -42,6 +42,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontSize: 40,
+                                fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.w700
                               ),
                             ),
@@ -51,7 +52,8 @@ class Home extends StatelessWidget {
                             Text('Best friend in cleanliness',
                               style: TextStyle(
                                 color: Color(0xffdcd6d6),
-                                fontFamily: 'Montserrat-Bold',
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.bold,
 
                               ),
                             )
@@ -72,7 +74,8 @@ class Home extends StatelessWidget {
                             child: Text('We have cleaned more than 10k+ cars',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Color(0xffffffff),
+                                fontFamily: 'Montserrat',
+                                color: Color(0xffffffff),
                               fontWeight: FontWeight.w600,
                               fontSize: 26,
                               height: 1.5
@@ -89,7 +92,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                               color: Color(0xf0cdc9c9),
                               fontSize: 15,
-                                fontFamily: 'Montserrat-Bold',
+                                fontFamily: 'Montserrat-bold',
                                 height: 1.5
                             ),
                             ),
@@ -116,7 +119,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   color: Color(0xffffffff),
                                   fontSize: 20,
-                                fontFamily: 'Montserrat-Bold',
+                                fontFamily: 'Montserrat-bold',
                                 letterSpacing: 1.5
                               ),
                             ),),
