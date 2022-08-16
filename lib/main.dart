@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Intro.dart';
 import 'package:locawash/Register.dart';
 import 'package:locawash/style.dart';
@@ -17,13 +18,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
-      home: SplashScreen(),
+      home: ForgotPassword(),
     );
   }
 }
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key}) : super(key: key);
+  const SplashScreen({Key ? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -111,9 +112,8 @@ class _SplashScreenState extends State<SplashScreen> {
             )
         ),
       ),
-    );;
+    );
   }
 }
 
 
-}
