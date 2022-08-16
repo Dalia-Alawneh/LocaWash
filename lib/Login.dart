@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:locawash/Register.dart';
 import 'style.dart';
+import 'package:flutter/services.dart';
+
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -11,15 +12,13 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final Style style = Style();
-
   bool _isObscure=true;
-
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
+        body: ListView(
           children: <Widget> [
             Container(
               height: 300,
@@ -61,19 +60,21 @@ class _LoginState extends State<Login> {
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
+              child: TextFormField(
+
                 style: TextStyle(
                     fontFamily: 'Montserrat-Bold'
                 ),
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'JhoneQwon@gmail.com',
+                  // errorText: _errorText,
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: TextField(
+              child: TextFormField(
                 style: TextStyle(
                     fontFamily: 'Montserrat-Bold'
                 ),
@@ -94,6 +95,7 @@ class _LoginState extends State<Login> {
                         })),
               ),
             ),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -138,11 +140,11 @@ class _LoginState extends State<Login> {
 
                 child: Text('Login',
                   style: TextStyle(
-                    color: Color(0xffffffff),
-                    fontSize: 20,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.1
+                      color: Color(0xffffffff),
+                      fontSize: 20,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.1
                   ),
                 ),),
             ),
@@ -168,7 +170,7 @@ class _LoginState extends State<Login> {
                         fontFamily: 'Montserrat',
                         fontWeight: FontWeight.bold,
                       ),
-                    ))
+                    )),
               ],
             )
 
@@ -209,10 +211,9 @@ class _MyStatefulWidgetState extends State<CheckBox> {
       value: isChecked,
       onChanged: (value) {
         setState(() {
-          isChecked = value;
+          isChecked = value!;
         });
       },
     );
   }
 }
-
