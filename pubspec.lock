@@ -74,13 +74,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.12.0"
-  intro_slider:
-    dependency: "direct main"
-    description:
-      name: intro_slider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.4.3"
   matcher:
     dependency: transitive
     description:
@@ -109,25 +102,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
-  rflutter_alert:
-    dependency: "direct main"
-    description:
-      name: rflutter_alert
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
   sky_engine:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.99"
-  smooth_page_indicator:
-    dependency: "direct main"
-    description:
-      name: smooth_page_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0+2"
   source_span:
     dependency: transitive
     description:
@@ -179,4 +158,3 @@ packages:
     version: "2.1.2"
 sdks:
   dart: ">=2.17.0-0 <3.0.0"
-  flutter: ">=1.12.0"
