@@ -12,7 +12,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   font_awesome_flutter: ^8.4.0
-  rflutter_alert: ^2.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

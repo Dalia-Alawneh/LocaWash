@@ -38,12 +38,12 @@ class _RegisterState extends State<Register> {
                     ),
                     Text('Best friend in cleanliness',
                       style: TextStyle(
+                        color: Color(0xffdcd6d6),
                         fontFamily: 'Montserrat',
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                         height: 1.5,
-                        color: Colors.white,
-                      ),)
+                      ),),
                   ]
               ),
             ),
