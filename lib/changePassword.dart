@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'Login.dart';
 import 'Style.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -150,9 +151,37 @@ class _changePasswordState extends State<ChangePassword> {
                           if(!_formKey.currentState!.validate()){
                             return;
                           }else if(newPass!=confPass){
-                            Alert(context: context, title: "", desc: "new password dose not match old password").show();
+                            Alert(
+                                context: context,
+                                title: "Warning!",
+                                buttons:[
+                                  DialogButton(
+                                    onPressed: () { Navigator.pop(context); },
+                                    child: Text('Ok'),
+                                  ),
+                                ] ,
+                                desc: "new password dose not match confirm password").show();
                           }else{
-                            Alert(context: context, title: "", desc: "Password updated").show();
+                            Alert(context: context, title: "Confirm",
+                                buttons:[
+                                  DialogButton(
+                                    color:Colors.green,
+
+                                    onPressed: () {
+                                      Alert(context: context,
+                                          title: "Confirmation message"
+                                          ,desc:'Password updated',
+                                      buttons: [
+                                        DialogButton(child: Text('Ok'), onPressed: (){
+                                          Navigator.push(context,MaterialPageRoute(builder: (context)=>Login()));
+                                        })
+                                      ]
+                                      ).show();
+                                      },
+                                    child: Text('Confirm'),
+                                  ),
+                                ] ,
+                                desc: "Password updated").show();
                           }
                         },
 

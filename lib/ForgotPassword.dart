@@ -51,7 +51,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
             Container(
                 margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                child: Text('Enter Your Email or Phone number to reset password',
+                child: Text('Enter Your Email to reset password',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 18,
@@ -75,7 +75,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               fontFamily: 'Montserrat-Bold'
                           ),
                           border: OutlineInputBorder(),
-                          hintText: 'Email or Phone number',
+                          hintText: 'Enter your email',
                         ),
                         validator: (value){
                           if(value!.isEmpty){
@@ -91,7 +91,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     Container(
                       width: double.infinity,
 
-                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
                       decoration: BoxDecoration(
                           color: Color(style.primaryPink),
                           borderRadius: BorderRadius.circular(30)

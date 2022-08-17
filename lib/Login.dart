@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Register.dart';
 import 'style.dart';
 class Login extends StatefulWidget {
@@ -138,6 +139,7 @@ class _LoginState extends State<Login> {
 
                         TextButton(
                           onPressed: (){
+                            Navigator.push(context,MaterialPageRoute(builder: (context)=>ForgotPassword()));
 
                           },
                           child: Text('Forget password?',
