@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'style.dart';
 class Register extends StatefulWidget {
   Register({key}) : super(key: key);
@@ -273,6 +275,11 @@ class _RegisterState extends State<Register> {
                         onPressed: (){
                           if(!_formKey.currentState!.validate()){
                             return;
+                          }else{
+                            showDialog(context: context,
+                            builder: (BuildContext context){
+                              return AdvancedAlert();
+                            });
                           }
                         },
                         child: Text('Create Account',
@@ -320,6 +327,102 @@ class _RegisterState extends State<Register> {
     );
   }
 }
+
+class AdvancedAlert extends StatelessWidget {
+  const AdvancedAlert({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    Style style = Style();
+    return Dialog(
+      shape: BorderDirectional(),
+      insetPadding:EdgeInsets.zero,
+      alignment: Alignment.bottomCenter,
+      child: Stack(
+        clipBehavior: Clip.none,
+      alignment: Alignment.center,
+      children: <Widget>[
+        Container(
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height/2.9,
+          padding: EdgeInsets.fromLTRB(30, 50, 30, 20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                child: Text("Verification sent to your email",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Montserrat',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: Text(
+                  "We have sent a Verification email for you, to verify your account",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    height: 1.5,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xffbdbdbd)
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Color(style.primaryPink),
+                      borderRadius: BorderRadius.circular(30)
+                  ),
+                child: TextButton(
+
+                    onPressed: (){
+                  Navigator.pop(context);
+                },
+                    child: Text('Got it',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Color(0xffffffff),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+              )
+
+            ],
+          )
+        ),
+        Positioned(
+
+            child: CircleAvatar(
+              backgroundColor: Color(0xffe8e8e8),
+              radius: 50,
+              child: Icon(
+                Icons.send,
+                  color: Color(style.primaryPink),
+                  size: 60,
+                  ),
+            ),
+        top: -50,
+        )
+      ],
+    )
+      //
+      // Stack(
+      //   alignment: Alignment.bottomCenter,
+      //   children: [
+
+      //   ],
+      // ),
+    );
+  }
+}
+
 
 class CheckBox extends StatefulWidget {
   const CheckBox({key}) : super(key: key);

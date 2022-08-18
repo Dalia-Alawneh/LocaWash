@@ -162,7 +162,8 @@ class _changePasswordState extends State<ChangePassword> {
                                 ] ,
                                 desc: "new password dose not match confirm password").show();
                           }else{
-                            Alert(context: context, title: "Confirm",
+                            Alert(context: context, 
+                                title: "Confirm",
                                 buttons:[
                                   DialogButton(
                                     color:Colors.green,
@@ -181,7 +182,7 @@ class _changePasswordState extends State<ChangePassword> {
                                     child: Text('Confirm'),
                                   ),
                                 ] ,
-                                desc: "Password updated").show();
+                                 image: Image.network('https://www.pngitem.com/middle/iJhbJT_transparent-checklist-png-green-check-in-circle-png/')).show();
                           }
                         },
 
