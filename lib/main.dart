@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
-      home: ForgotPassword(),
+      home: SplashScreen(),
     );
   }
 }
