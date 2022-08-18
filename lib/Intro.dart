@@ -5,8 +5,7 @@ import 'package:locawash/content.dart';
 import 'package:locawash/content_brain.dart';
 import 'package:locawash/style.dart';
 import 'content_brain.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:intro_slider/intro_slider.dart';
+
 
 ContentBrain contentBrain = ContentBrain();
 class Intro extends StatefulWidget {
