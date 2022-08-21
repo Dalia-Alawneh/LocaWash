@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Register.dart';
+import 'package:locawash/VerificationLogin.dart';
 import 'style.dart';
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
@@ -164,7 +165,13 @@ class _LoginState extends State<Login> {
                         ),
                         onPressed: (){
                           if(!_formKey.currentState!.validate()){
-                            return;
+                            return ;
+                          }
+                          else{
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  VerificationLogin()),
+                            );
                           }
                         },
 
