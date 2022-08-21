@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Login.dart';
 import 'package:locawash/Register.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+
 import 'style.dart';
 class OTPcodeEmail extends StatefulWidget {
   OTPcodeEmail({key}) : super(key: key);
@@ -11,6 +14,10 @@ class OTPcodeEmail extends StatefulWidget {
 }
 
 class _OTPcodeEmailState extends State<OTPcodeEmail> {
+
+  bool _onEditing = true;
+  late String _code;
+
   final Style style = Style();
   bool _isObscure=true;
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
@@ -124,6 +131,33 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                   ),
                 ),),
             ),
+
+            // VerificationCode (
+            //   textStyle: TextStyle(fontSize: 20.0, color: Colors.red[900]),
+            //   keyboardType: TextInputType.number,
+            //   underlineColor: Colors.amber,
+            //   length: 3,
+            //   cursorColor: Colors.blue,
+            //   clearAll: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Text(
+            //       'clear all',
+            //       style: TextStyle(fontSize: 14.0, decoration: TextDecoration.underline, color: Colors.blue[700]),
+            //     ),
+            //   ),
+            //   onCompleted: (String value) {
+            //     setState(() {
+            //       _code = value;
+            //     });
+            //   },
+            //   onEditing: (bool value) {
+            //     setState(() {
+            //       _onEditing = value;
+            //     });
+            //     if (!_onEditing) FocusScope.of(context).unfocus();
+            //   },
+            // ),
+
 
           ],
 
