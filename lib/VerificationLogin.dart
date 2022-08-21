@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Login.dart';
+import 'package:locawash/OTPcodeEmail.dart';
 import 'package:locawash/Register.dart';
 import 'style.dart';
 class VerificationLogin extends StatefulWidget {
@@ -63,11 +64,11 @@ class _VerificationLoginState extends State<VerificationLogin> {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return Register();
+                    return OTPcodeEmail();
                   }));
                 },
                 child: Container(
-                  
+
                   margin: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                   width: double.infinity,
                   height: 80,
@@ -136,16 +137,16 @@ class _VerificationLoginState extends State<VerificationLogin> {
                     ],
                   ),
                 ),
-              ), 
-              
-              SizedBox(
-                  height: 15, 
               ),
-            
+
+              SizedBox(
+                  height: 15,
+              ),
+
             GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return Register();
+                  return OTPcodeEmail();
                 }),);
               },
               child: Container(

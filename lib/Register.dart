@@ -270,7 +270,6 @@ class _RegisterState extends State<Register> {
                       ),
                       child: TextButton(
                         style: TextButton.styleFrom(
-
                         ),
                         onPressed: (){
                           if(!_formKey.currentState!.validate()){
@@ -278,7 +277,8 @@ class _RegisterState extends State<Register> {
                           }else{
                             showDialog(context: context,
                             builder: (BuildContext context){
-                              return AdvancedAlert();
+                              return AdvancedAlert("Verification sent to your email"
+                                ,"We have sent a Verification email for you, to verify your account");
                             });
                           }
                         },
@@ -329,7 +329,10 @@ class _RegisterState extends State<Register> {
 }
 
 class AdvancedAlert extends StatelessWidget {
-  const AdvancedAlert({Key? key}) : super(key: key);
+  AdvancedAlert (this.head, this.desc);
+  String head;
+  String desc;
+
   @override
   Widget build(BuildContext context) {
     Style style = Style();
@@ -351,7 +354,7 @@ class AdvancedAlert extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                child: Text("Verification sent to your email",
+                child: Text(head,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -363,7 +366,7 @@ class AdvancedAlert extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Text(
-                  "We have sent a Verification email for you, to verify your account",
+                  desc,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     height: 1.5,
