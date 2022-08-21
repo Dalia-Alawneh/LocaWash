@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:locawash/AdvancedAlert.dart';
 import 'package:locawash/Login.dart';
 import 'package:locawash/OTPcodeEmail.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -278,9 +279,9 @@ class _RegisterState extends State<Register> {
                           }else{
                             showDialog(context: context,
                             builder: (BuildContext context){
-                              return AdvancedAlert("Verification sent to your email"
-                                ,"We have sent a Verification email for you, to verify your account",
-                                  (){
+                              return AdvancedAlert(head: "Verification sent to your email"
+                                ,desc: "We have sent a Verification email for you, to verify your account",
+                                  onPressedCustom: (){
                                     Navigator.pop(context);
                                   }
                               );
@@ -333,104 +334,7 @@ class _RegisterState extends State<Register> {
   }
 }
 
-class AdvancedAlert extends StatelessWidget {
-  AdvancedAlert (this.head, this.desc, onPressedCustom);
-  String head;
-  String desc;
-  void onPressedCustom(){
-  }
-  @override
-  Widget build(BuildContext context) {
-    Style style = Style();
-    return Dialog(
-      shape: BorderDirectional(),
-      insetPadding:EdgeInsets.zero,
-      alignment: Alignment.bottomCenter,
-      child: Stack(
-        clipBehavior: Clip.none,
-      alignment: Alignment.center,
-      children: <Widget>[
-        Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height/2.9,
-          padding: EdgeInsets.fromLTRB(30, 50, 30, 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                child: Text(head,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Text(
-                  desc,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    height: 1.5,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffbdbdbd)
-                  ),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Color(style.primaryPink),
-                      borderRadius: BorderRadius.circular(30)
-                  ),
-                child: TextButton(
 
-                    onPressed: (){
-
-                },
-                    child: Text('Got it',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xffffffff),
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-              )
-
-            ],
-          )
-        ),
-        Positioned(
-
-            child: CircleAvatar(
-              backgroundColor: Color(0xffe8e8e8),
-              radius: 50,
-              child: Icon(
-                Icons.send,
-                  color: Color(style.primaryPink),
-                  size: 60,
-                  ),
-            ),
-        top: -50,
-        )
-      ],
-    )
-      //
-      // Stack(
-      //   alignment: Alignment.bottomCenter,
-      //   children: [
-
-      //   ],
-      // ),
-    );
-  }
-}
 
 
 class CheckBox extends StatefulWidget {
