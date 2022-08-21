@@ -5,7 +5,8 @@ import 'package:locawash/Register.dart';
 import 'Otp.dart';
 import 'style.dart';
 class OTPcodeEmail extends StatefulWidget {
-  OTPcodeEmail({key}) : super(key: key);
+  final String msg;
+  OTPcodeEmail(this.msg);
 
   @override
   State<OTPcodeEmail> createState() => _OTPcodeEmailState();
@@ -75,8 +76,9 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                         fontFamily: 'Montserrat-Bold'
                     ),
                     border: OutlineInputBorder(),
-                    hintText: 'JhoneQwon@gmail.com',
+                    hintText: 'Enter Email',
                   ),
+                  initialValue: widget.msg,
                   validator: (value){
                     if(value!.isEmpty){
                       return "email is required";
@@ -110,7 +112,12 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                   else{
                     showDialog(context: context,
                         builder: (BuildContext context){
-                        return AdvancedAlert();
+                          return AdvancedAlert('OTP has been sent',
+                              'We have sent the OTP code to your email please chec your email right now',
+                            (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Otp()));
+                          }
+                          );
                         });
                   }
                 },
@@ -135,7 +142,10 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
 }
 
 class AdvancedAlert extends StatelessWidget {
-  const AdvancedAlert({Key? key}) : super(key: key);
+  AdvancedAlert (this.head, this.desc, onPressedCustom);
+  String head;
+  String desc;
+  void onPressedCustom(){}
   @override
   Widget build(BuildContext context) {
     Style style = Style();
@@ -157,7 +167,7 @@ class AdvancedAlert extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                      child: Text('OTP has been sent',
+                      child: Text(head,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -169,7 +179,7 @@ class AdvancedAlert extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Text(
-                        'We have sent the OTP code to your email please chec your email right now',
+                        desc,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             height: 1.5,
@@ -188,9 +198,7 @@ class AdvancedAlert extends StatelessWidget {
                       child: TextButton(
 
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
-                              return Otp();
-                            }));
+                              onPressedCustom();
                           },
                           child: Text('Got it',
                             style: TextStyle(

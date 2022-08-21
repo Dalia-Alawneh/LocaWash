@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'package:locawash/OTPcodeEmail.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'style.dart';
 class Register extends StatefulWidget {
@@ -278,7 +279,11 @@ class _RegisterState extends State<Register> {
                             showDialog(context: context,
                             builder: (BuildContext context){
                               return AdvancedAlert("Verification sent to your email"
-                                ,"We have sent a Verification email for you, to verify your account");
+                                ,"We have sent a Verification email for you, to verify your account",
+                                  (){
+                                    Navigator.pop(context);
+                                  }
+                              );
                             });
                           }
                         },
@@ -329,10 +334,11 @@ class _RegisterState extends State<Register> {
 }
 
 class AdvancedAlert extends StatelessWidget {
-  AdvancedAlert (this.head, this.desc);
+  AdvancedAlert (this.head, this.desc, onPressedCustom);
   String head;
   String desc;
-
+  void onPressedCustom(){
+  }
   @override
   Widget build(BuildContext context) {
     Style style = Style();
@@ -385,7 +391,7 @@ class AdvancedAlert extends StatelessWidget {
                 child: TextButton(
 
                     onPressed: (){
-                  Navigator.pop(context);
+
                 },
                     child: Text('Got it',
                       style: TextStyle(
