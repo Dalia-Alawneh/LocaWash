@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
 
           // Display the entered OTP code
