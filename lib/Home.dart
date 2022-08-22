@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'AppBar.dart';
 import 'Register.dart';
 import 'style.dart';
 class Home extends StatelessWidget {
