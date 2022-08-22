@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final Style style = Style();
-
+  var emailVal;
   bool _isObscure=true;
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
   @override
@@ -79,6 +79,7 @@ class _LoginState extends State<Login> {
                           hintText: 'JhoneQwon@gmail.com',
                         ),
                         validator: (value){
+                          emailVal = value;
                           if(value!.isEmpty){
                             return "email is required";
                           }else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
@@ -170,7 +171,7 @@ class _LoginState extends State<Login> {
                           else{
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  VerificationLogin()),
+                              MaterialPageRoute(builder: (context) =>  VerificationLogin(emailVal)),
                             );
                           }
                         },

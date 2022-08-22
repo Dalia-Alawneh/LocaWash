@@ -5,8 +5,9 @@ import 'package:locawash/OTPcodeEmail.dart';
 import 'package:locawash/Register.dart';
 import 'style.dart';
 class VerificationLogin extends StatefulWidget {
-  VerificationLogin({key}) : super(key: key);
 
+  VerificationLogin( this.msg);
+  final String msg;
   @override
   State<VerificationLogin> createState() => _VerificationLoginState();
 }
@@ -64,7 +65,7 @@ class _VerificationLoginState extends State<VerificationLogin> {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return OTPcodeEmail();
+                    return OTPcodeEmail(widget.msg);
                   }));
                 },
                 child: Container(
@@ -146,7 +147,7 @@ class _VerificationLoginState extends State<VerificationLogin> {
             GestureDetector(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return OTPcodeEmail();
+                  return OTPcodeEmail(widget.msg);
                 }),);
               },
               child: Container(
@@ -219,7 +220,6 @@ class _VerificationLoginState extends State<VerificationLogin> {
                 ),
               ),
             ),
-
               // Column(
               //   mainAxisAlignment: MainAxisAlignment.center,
               //   children: [
