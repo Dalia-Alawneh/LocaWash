@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
+import 'package:locawash/profile_page.dart';
 import 'style.dart';
 
 void OtpScreen() {
@@ -180,6 +181,10 @@ class _HomePageState extends State<HomePage> {
                         _fieldThree.text +
                          _fieldFour.text +
                         _fieldFive.text;
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context){
+                      return ProfilePage();
+                    }));
                   });
                 },
                 child:  Text('Submit',

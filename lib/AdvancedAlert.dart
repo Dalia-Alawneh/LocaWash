@@ -65,9 +65,7 @@ class AdvancedAlert extends StatelessWidget {
                           onPressed: (){
 
                             onPressedCustom!();
-                            Navigator.push(context, MaterialPageRoute(builder: (context){
-                              return OtpScreeen();
-                            }));
+
 
                           },
                           child: Text('Got it',
