@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Login.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:locawash/AppBar.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({key}) : super(key: key);
@@ -14,11 +15,12 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
-
+        bottomNavigationBar: AppBarCustom(),
         resizeToAvoidBottomInset: false,
         body: ListView(
           children: <Widget> [
-              Column(
+
+            Column(
                 children: [
                   SizedBox(
                     height: 50,
@@ -182,7 +184,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             minWidth: 22,
                             cornerRadius: 40.0,
                             borderColor: [Colors.grey.shade200],
-                            activeBgColors: [ [Colors.grey!], [Color(0xffF54168)!]  ],
+                            activeBgColors: [ [Colors.grey], [Color(0xffF54168)]  ],
                             activeFgColor: Colors.white60,
                             inactiveBgColor: Colors.white,
                             inactiveFgColor: Colors.white,
