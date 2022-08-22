@@ -3,6 +3,7 @@ import 'package:locawash/ForgotPassword.dart';
 import 'package:locawash/Login.dart';
 import 'package:locawash/OTPcodeEmail.dart';
 import 'package:locawash/Register.dart';
+import 'OTPcodeNumber.dart';
 import 'style.dart';
 class VerificationLogin extends StatefulWidget {
 
@@ -65,7 +66,7 @@ class _VerificationLoginState extends State<VerificationLogin> {
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return OTPcodeEmail(widget.msg);
+                    return OTPcodeNumber(widget.msg);
                   }));
                 },
                 child: Container(
@@ -192,7 +193,7 @@ class _VerificationLoginState extends State<VerificationLogin> {
                               ),
                               ),
                             ),
-                            Text('Send OTP code via phone email',
+                            Text('Send OTP code via email',
                               style:TextStyle(
                                 fontSize: 10,
                                 height: 2,
