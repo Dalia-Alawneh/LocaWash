@@ -14,6 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return  SafeArea(
       child: Scaffold(
+
         resizeToAvoidBottomInset: false,
         body: ListView(
           children: <Widget> [
