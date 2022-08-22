@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Style.dart';
+import 'package:locawash/profile_page.dart';
 
 class AppBarCustom extends StatefulWidget {
   @override
@@ -30,11 +31,11 @@ class _AppBarCustomState extends State<AppBarCustom> {
                 Expanded(
                     child:IconButton(
                       icon: Icon(Icons.home_outlined,
-                        color: mainColorTime,
+                        color: mainColorHome,
                       ),
                       onPressed: (){
                         setState((){
-                          mainColorTime = Color(style.primaryPink);
+                          mainColorHome = Color(style.primaryPink);
                         });
                       },
 
@@ -78,6 +79,9 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         setState((){
                           mainColorSettings = Color(style.primaryPink);
                         });
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return ProfilePage();
+                        }));
                       },
 
                     )
