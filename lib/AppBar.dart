@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/MainHome.dart';
 import 'package:locawash/Style.dart';
 import 'package:locawash/profile_page.dart';
 
@@ -18,7 +19,7 @@ class _AppBarCustomState extends State<AppBarCustom> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      margin: EdgeInsets.fromLTRB(20, 0, 20, 15),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(28),
         child: BottomAppBar(
@@ -37,6 +38,9 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         setState((){
                           mainColorHome = Color(style.primaryPink);
                         });
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return MainHome();
+                        }));
                       },
 
                     )
