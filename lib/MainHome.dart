@@ -259,29 +259,38 @@ class _MainHomeState extends State<MainHome> {
                                   borderRadius: BorderRadius.circular(10),
                                   color: Color(0xffd0cfcf)
                               ),
+
                                 child: Container(
-                                  margin:EdgeInsets.all(8),
-                                      alignment: AlignmentDirectional.topEnd,
-                                      height: 23,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(23),
-                                        //color: Color(0xffffffff),
+                                  alignment: Alignment.topRight,
+                                  child: Stack(
+                                    children: [
+                                            Image.asset('images/pexels-brett-sayles-1322185.jpg',),
+                                      Positioned(
+                                        top: 5,
+                                        left: 130,
+                                        child: Container(
+                                          color: Colors.white,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Icon(Icons.star,
+                                                size: 18,
+                                                color: Color(style.primaryPink),
+                                              ),
+                                              Text('4.5',
+                                                style: TextStyle(
+                                                    color: Color(style.primaryPink)
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(Icons.star,
-                                      size: 18,
-                                      color: Color(style.primaryPink),
-                                    ),
-                                    Text('4.5',
-                                      style: TextStyle(
-                                          color: Color(style.primaryPink)
-                                      ),
-                                    )
-                                  ],
-                                ),)
+                                    ],
+
+                                  ),
+                                )
                             ),
                             Text('Service',
                                 style: TextStyle(
@@ -349,28 +358,34 @@ class _MainHomeState extends State<MainHome> {
                                   color: Color(0xffd0cfcf)
                               ),
                                 child: Container(
-                                  margin:EdgeInsets.all(8),
-                                  alignment: AlignmentDirectional.topEnd,
-                                  height: 23,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(23),
-                                    //color: Color(0xffffffff),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                  alignment: Alignment.topRight,
+                                  child: Stack(
                                     children: [
-                                      Icon(Icons.star,
-                                        size: 18,
-                                        color: Color(style.primaryPink),
-                                      ),
-                                      Text('4.5',
-                                        style: TextStyle(
-                                            color: Color(style.primaryPink)
+                                      Image.asset('images/pexels-brett-sayles-1322185.jpg',),
+
+                                     Positioned(
+                                      top: 5,
+                                      left: 130,
+                                      child: Container(
+                                        color: Colors.white,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Icon(Icons.star,
+                                              size: 18,
+                                              color: Color(style.primaryPink),
+                                            ),
+                                            Text('4.5',
+                                              style: TextStyle(
+                                                  color: Color(style.primaryPink)
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                      )
-                                    ],
-                                  ),)
+                                      ),
+                                    ),
+                                  ],),)
                             ),
                             Text('Service',
                                 style: TextStyle(
