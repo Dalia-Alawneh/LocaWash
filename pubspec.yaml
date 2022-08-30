@@ -19,6 +19,9 @@ dependencies:
   pinput: ^2.2.12
   toggle_switch: ^2.0.1
   carousel_slider: ^4.1.1
+  http: ^0.13.5
+  shared_preferences: ^2.0.15
+  image_picker: ^0.8.5+3
 dev_dependencies:
   flutter_test:
     sdk: flutter

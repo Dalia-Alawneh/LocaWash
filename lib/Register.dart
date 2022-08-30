@@ -283,7 +283,8 @@ class _RegisterState extends State<Register> {
                                 ,desc: "We have sent a Verification email for you, to verify your account",
                                   onPressedCustom: (){
                                     Navigator.pop(context);
-                                  }
+                                  },
+                                  icon: Icons.send
                               );
                             });
                           }
