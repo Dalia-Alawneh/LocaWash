@@ -1,15 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/TaptoEdit.dart';
-import 'package:locawash/profile_page.dart';
-import 'package:locawash/user_desc.dart';
-import 'package:toggle_switch/toggle_switch.dart';
-import 'package:locawash/AppBar.dart';
-import 'package:locawash/userModelFromJson.dart';
+import 'package:locawash/ProfilePage/TaptoEdit.dart';
+import 'package:locawash/ProfilePage/user_desc.dart';
+import 'package:locawash/ProfilePage/userModelFromJson.dart';
 import 'api_service.dart';
-import 'apiUsers.dart';
 import 'textfield_widget.dart';
 import 'user.dart';
 
@@ -42,7 +35,7 @@ class _editProfileState extends State<editProfile> {
   }
 
   void _getData() async {
-    _userModel = (await apiService().getUsers())!;
+    _userModel = (await apiService().getUsers())!.cast<UserModel>();
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
 

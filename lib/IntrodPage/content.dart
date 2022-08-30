@@ -6,7 +6,6 @@ class Content {
 
   Content(this.h1Text, this.h2Text);
 }
-
 class Indicator {
   Container ind;
   Indicator(this.ind);

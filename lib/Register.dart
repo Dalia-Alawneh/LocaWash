@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:locawash/AdvancedAlert.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/OTPcodeEmail.dart';
+import 'package:locawash/Login/Login.dart';
+import 'package:locawash/Login/OTPcodeEmail.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'style.dart';
 class Register extends StatefulWidget {

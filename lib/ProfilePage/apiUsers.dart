@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/Login.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import 'package:locawash/AppBar.dart';
-import 'package:locawash/userModelFromJson.dart';
+import 'package:locawash/ProfilePage/userModelFromJson.dart';
 import 'api_service.dart';
-import 'apiUsers.dart';
 
 class apiUsers extends StatefulWidget {
   @override
@@ -20,7 +17,7 @@ class _apiUsersState extends State<apiUsers> {
   }
 
   void _getData() async {
-    _userModel = (await apiService().getUsers())!;
+    _userModel = (await apiService().getUsers())!.cast<UserModel>();
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
   Widget build(BuildContext context) {

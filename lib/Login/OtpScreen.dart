@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/profile_page.dart';
-import 'style.dart';
+import 'package:locawash/ProfilePage/profile_page.dart';
 
 void OtpScreen() {
   runApp(const OtpScreeen());

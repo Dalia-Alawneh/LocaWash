@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/OtpScreen.dart';
-import 'package:locawash/Register.dart';
 import 'package:locawash/AdvancedAlert.dart';
-import 'Otp.dart';
-import 'style.dart';
+import '../style.dart';
+import 'package:locawash/Login/OtpScreen.dart';
+
 
 class OTPcodeEmail extends StatefulWidget {
   final String msg;

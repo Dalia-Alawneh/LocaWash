@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'dart:developer';
-import 'userModelFromJson.dart';
+import 'package:locawash/ProfilePage/userModelFromJson.dart';
 import 'constants.dart';
 
 

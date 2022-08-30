@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/Login.dart';
-import 'AppBar.dart';
-import 'Register.dart';
-import 'style.dart';
+import 'package:locawash/Login/Login.dart';
+import '../AppBar.dart';
+import '../Register.dart';
+import '../style.dart';
 class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   final Style style = Style();

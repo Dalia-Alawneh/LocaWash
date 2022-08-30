@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/edit_profile.dart';
+import 'package:locawash/Login/Login.dart';
+import 'package:locawash/ProfilePage/edit_profile.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:locawash/AppBar.dart';
-import 'package:locawash/userModelFromJson.dart';
 import 'api_service.dart';
-import 'apiUsers.dart';
-
+import 'package:locawash/ProfilePage/userModelFromJson.dart';
 class ProfilePage extends StatefulWidget {
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -21,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void _getData() async {
-    _userModel = (await apiService().getUsers())!;
+    _userModel = (await apiService().getUsers())!.cast<UserModel>();
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
   }
   Widget build(BuildContext context) {

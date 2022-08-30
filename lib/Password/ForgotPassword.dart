@@ -1,9 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:locawash/changePassword.dart';
-import 'Style.dart';
-import 'Register.dart';
+import 'package:locawash/Password/changePassword.dart';
+import '../Style.dart';
+import '../Register.dart';
+
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
 

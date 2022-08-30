@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/OTPcodeEmail.dart';
+import 'package:locawash/Password/ForgotPassword.dart';
+import 'package:locawash/Login/Login.dart';
+import 'package:locawash/Login/OTPcodeEmail.dart';
 import 'package:locawash/Register.dart';
 import 'OTPcodeNumber.dart';
-import 'style.dart';
+import '../style.dart';
 class VerificationLogin extends StatefulWidget {
 
   VerificationLogin( this.msg);

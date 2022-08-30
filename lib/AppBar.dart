@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/MainHome.dart';
 import 'package:locawash/Style.dart';
-import 'package:locawash/apiUsers.dart';
-import 'package:locawash/profile_page.dart';
+import 'package:locawash/ProfilePage/apiUsers.dart';
+import 'package:locawash/ProfilePage/profile_page.dart';
+import 'HomePage/MainHome.dart';
 
 class AppBarCustom extends StatefulWidget {
   @override

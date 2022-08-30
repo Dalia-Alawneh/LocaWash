@@ -1,28 +1,18 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Intro.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/Register.dart';
+import 'package:locawash/IntrodPage/Intro.dart';
 import 'package:locawash/style.dart';
-import 'Home.dart';
 import 'MainHome.dart';
+
+
 void main() {
   runApp( MyApp());
 }
-
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
@@ -40,11 +30,11 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState()  {
-      // TODO: implement initState
-      super.initState();
-      Timer(
-          Duration(seconds: 4),
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(
+      Duration(seconds: 4),
         ()=>Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context)=>Intro()))
     );
   }

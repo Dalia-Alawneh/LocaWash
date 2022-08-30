@@ -1,13 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Preferences.dart';
+import 'package:locawash/Password/ForgotPassword.dart';
 import 'package:locawash/Register.dart';
-import 'package:locawash/VerificationLogin.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'Users.dart';
-import 'style.dart';
+import 'package:locawash/Login/VerificationLogin.dart';
+import '../style.dart';
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -16,26 +11,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  Preferences preferences =Preferences();
-  Users usersData =Users();
-  var userData;
-
-
-  Future getUsers() async {
-    userData = await usersData.getData();
-    print(userData);
-  }
   final Style style = Style();
   var emailVal;
-  var passVal;
   bool _isObscure=true;
-
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
-      key: _scaffoldKey,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: ListView(
@@ -114,7 +96,6 @@ class _LoginState extends State<Login> {
                             fontFamily: 'Montserrat-Bold'
                         ),
                         validator: (value){
-                          passVal = value;
                           if(value!.isEmpty){
                             return "Password is required!";
                           }else
@@ -188,46 +169,10 @@ class _LoginState extends State<Login> {
                             return ;
                           }
                           else{
-                            //print(emailVal);
-                            //print(passVal);
-                            for(var user in userData){
-                              if(user['email'] == emailVal) {
-                                if (user['username'] == passVal) {
-                                  print(user['username']);
-                                  String name = user['name'];
-                                  String username = user['username'];
-                                  print(username);
-                                  Map<String,String> userMap ={
-                                    'Name': name,
-                                    'username': username,
-                                  };
-                                  preferences.savePreference(user);
-                                  // print(preferences.getName());
-                                  // Element.pre()
-                                  // print(preferences.userMap['Name']);
-                                  // print(userMap['name']);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            VerificationLogin(emailVal)),
-                                  );
-                                }
-                              } else{
-                                  Alert(context: context,
-                                      title: "Error!",
-                                    desc:'Password or Email is invalid',
-                                      buttons:[
-                                        DialogButton(
-                                          color:Color(style.primaryPink),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text('Ok'),
-                                        ),
-                                      ] ,).show();
-                                     }
-                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>  VerificationLogin(emailVal)),
+                            );
                           }
                         },
 
