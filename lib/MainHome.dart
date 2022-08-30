@@ -157,8 +157,8 @@ class _MainHomeState extends State<MainHome> {
         ),
       );
       listItems.add(item);
-      MYLIST = listItems;
     }
+    MYLIST = listItems;
   }
   @override
   Widget build(BuildContext context) {
