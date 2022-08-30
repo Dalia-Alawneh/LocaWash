@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/AdvancedAlert.dart';
 import 'package:locawash/Login.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:locawash/AppBar.dart';
-
+import 'ChangePhotoAlert.dart';
+import 'Photos.dart';
+import 'Preferences.dart';
 class ProfilePage extends StatefulWidget {
   ProfilePage({key}) : super(key: key);
 
@@ -11,6 +14,23 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Map<String, String> userMap = Preferences().getUser();
+  Preferences preferences =Preferences();
+  String name = Preferences().getName();
+  Photos photosData = Photos();
+  String photoLink='';
+  var  photoData;
+  var userData;
+  @override
+  void initState(){
+    super.initState();
+    getPhotos();
+    // getUsers();
+  }
+  Future getPhotos() async{
+    photoData = await photosData.getData();
+    print(photoData);
+  }
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
@@ -30,13 +50,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     radius: 50,
                   ),
                   SizedBox(height: 15,),
-                  Text('Adrew Colla', style: TextStyle(
+                  Text(
+                    '${preferences.getName()}', style: TextStyle(
                     fontSize: 14.0,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Montserrat',
                   ),),
                   SizedBox(height: 5,),
-                  Text('@AndrewColla92', style: TextStyle(
+                  Text('${preferences.getUsername()}', style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Montserrat',
@@ -60,7 +81,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: ListTile(
                     onTap: (){
-                    },
+                  showDialog(context: context,
+                  builder: (BuildContext context){
+                      // return AdvancedAlert(head: "Profile has been updated",
+                      // desc: '',
+                      //   onPressedCustom: (){},
+                      //   icon: Icons.person_pin_outlined,
+                      // );
+                      return ChangePhotoAlert();
+                    });
+                  },
                     leading: Icon(Icons.person_outline,
                       size: 25.0,
                       color: Colors.black,

@@ -122,7 +122,8 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                               desc: 'We have sent the OTP code to your email please check your email right now',
                             onPressedCustom:(){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpScreeen()));
-                          }
+                          },
+                            icon: Icons.send,
                           );
                         });
                   }

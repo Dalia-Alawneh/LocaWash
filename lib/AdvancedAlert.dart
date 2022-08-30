@@ -6,11 +6,12 @@ import 'Style.dart';
 
 class AdvancedAlert extends StatelessWidget {
   final Style style = Style();
-  AdvancedAlert ({required this.head, required this.desc, required this.onPressedCustom}){
+  AdvancedAlert ({required this.head, required this.desc, required this.onPressedCustom, required this.icon}){
 
   }
   String head;
   String desc;
+  IconData icon;
   final VoidCallback? onPressedCustom;
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class AdvancedAlert extends StatelessWidget {
                 backgroundColor: Color(0xffe8e8e8),
                 radius: 50,
                 child: Icon(
-                  Icons.send,
+                  icon,
                   color: Color(style.primaryPink),
                   size: 60,
                 ),
