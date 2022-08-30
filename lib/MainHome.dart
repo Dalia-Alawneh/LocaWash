@@ -1,18 +1,33 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:locawash/AppBar.dart';
 import 'package:locawash/Style.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'userModelFromJson.dart';
+import 'api_service.dart';
+
 class MainHome extends StatefulWidget {
-  const MainHome({Key? key}) : super(key: key);
 
   @override
   State<MainHome> createState() => _MainHomeState();
 }
 
 class _MainHomeState extends State<MainHome> {
+  late List<UserModel>? _userModel = [];
+
   Style style =Style();
   int homeColor= 0xffd0cfcf;
   @override
+  void initState() {
+    super.initState();
+    _getData();
+  }
+
+  void _getData() async {
+    _userModel = (await apiService().getUsers())!;
+    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+  }
+
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -43,7 +58,7 @@ class _MainHomeState extends State<MainHome> {
                               SizedBox(
                                 height: 7,
                               ),
-                              Text('Adrew Colla', style: TextStyle(
+                              Text(_userModel![3].username, style: TextStyle(
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Montserrat',
@@ -241,7 +256,7 @@ class _MainHomeState extends State<MainHome> {
                                   blurRadius: 25,
                                   offset: Offset(0,10)
                               )
-                            ]
+                            ],
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
