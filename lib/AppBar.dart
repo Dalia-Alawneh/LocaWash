@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/MainHome.dart';
 import 'package:locawash/Style.dart';
+import 'package:locawash/apiUsers.dart';
 import 'package:locawash/profile_page.dart';
 
 class AppBarCustom extends StatefulWidget {
@@ -55,6 +56,9 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         setState((){
                           mainColorTime = Color(style.primaryPink);
                         });
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return apiUsers();
+                        }));
                       },
 
                     )
