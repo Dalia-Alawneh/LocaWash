@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:locawash/Home.dart';
-import 'package:locawash/content.dart';
-import 'package:locawash/content_brain.dart';
+import 'package:locawash/HomePage/Home.dart';
+import 'package:locawash/IntrodPage/content_brain.dart';
 import 'package:locawash/style.dart';
-import 'content_brain.dart';
-
 
 ContentBrain contentBrain = ContentBrain();
 class Intro extends StatefulWidget {

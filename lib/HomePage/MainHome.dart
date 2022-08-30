@@ -1,13 +1,11 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:locawash/AppBar.dart';
 import 'package:locawash/Style.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'userModelFromJson.dart';
-import 'api_service.dart';
+import 'package:locawash/ProfilePage/userModelFromJson.dart';
+import 'package:locawash/ProfilePage/api_service.dart';
 
 class MainHome extends StatefulWidget {
-
   @override
   State<MainHome> createState() => _MainHomeState();
 }

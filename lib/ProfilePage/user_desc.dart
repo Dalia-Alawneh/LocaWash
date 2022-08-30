@@ -1,4 +1,4 @@
-import 'user.dart';
+import 'package:locawash/ProfilePage/user.dart';
 import 'package:flutter/material.dart';
 class UserPreferences {
   static const myUser = User(

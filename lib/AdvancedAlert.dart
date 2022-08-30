@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'OtpScreen.dart';
 import 'Style.dart';
 
 class AdvancedAlert extends StatelessWidget {
@@ -63,10 +61,7 @@ class AdvancedAlert extends StatelessWidget {
                       ),
                       child: TextButton(
                           onPressed: (){
-
                             onPressedCustom!();
-
-
                           },
                           child: Text('Got it',
                             style: TextStyle(

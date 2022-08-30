@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Intro.dart';
 import 'content.dart';
 class ContentBrain {
   int _contentNumber = 0;

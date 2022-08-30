@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Login.dart';
-import 'package:locawash/OtpScreen.dart';
-import 'package:locawash/Register.dart';
 import 'package:locawash/AdvancedAlert.dart';
-import 'Otp.dart';
-import 'style.dart';
+import '../style.dart';
+import 'package:locawash/Login/OtpScreen.dart';
 
-class OTPcodeEmail extends StatefulWidget {
+class OTPcodeNumber extends StatefulWidget {
   final String msg;
-  OTPcodeEmail(this.msg);
+  OTPcodeNumber(this.msg);
 
   @override
-  State<OTPcodeEmail> createState() => _OTPcodeEmailState();
+  State<OTPcodeNumber> createState() => _OTPcodeNumberState();
 }
 
-class _OTPcodeEmailState extends State<OTPcodeEmail> {
+class _OTPcodeNumberState extends State<OTPcodeNumber> {
 
   bool _onEditing = true;
   late String _code;
@@ -59,7 +55,7 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
 
             Container(
                 margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                child: Text('Enter your email to get the OTP code',
+                child: Text('Enter your phone to get the OTP code',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 24,
@@ -82,14 +78,14 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                         fontFamily: 'Montserrat-Bold'
                     ),
                     border: OutlineInputBorder(),
-                    hintText: 'Enter Email',
+                    hintText: 'Enter Phone number',
                   ),
-                  initialValue: widget.msg,
+                  // initialValue: widget.msg,
                   validator: (value){
                     if(value!.isEmpty){
-                      return "email is required";
-                    }else if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
-                      return "Please Enter a correct email";
+                      return "Phone number is required";
+                    }else if(!RegExp(r'^[0-9]+$').hasMatch(value)){
+                      return "Please Enter a correct number";
                     }else
                       return null;
                   },
@@ -120,9 +116,9 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
                         builder: (BuildContext context){
                           return AdvancedAlert(head: 'OTP has been sent',
                               desc: 'We have sent the OTP code to your email please check your email right now',
-                            onPressedCustom:(){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpScreeen()));
-                          }
+                              onPressedCustom:(){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpScreeen()));
+                              }
                           );
                         });
                   }
@@ -173,6 +169,4 @@ class _OTPcodeEmailState extends State<OTPcodeEmail> {
     );
   }
 }
-
-
 
