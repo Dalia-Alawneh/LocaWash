@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:locawash/HomePage/main.dart';
+import 'package:locawash/main.dart';
 import 'package:locawash/Login/Login.dart';
 import 'package:locawash/HomePage/Home.dart';
 

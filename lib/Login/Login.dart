@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Password/ForgotPassword.dart';
+<<<<<<< HEAD
 import 'package:locawash/Register.dart';
 import 'package:locawash/Login/VerificationLogin.dart';
 import 'package:locawash/style.dart';
 
+=======
+import 'package:locawash/Preferences.dart';
+import 'package:locawash/Register.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:locawash/Login/VerificationLogin.dart';
+import 'package:locawash/Users.dart';
+import 'package:locawash/style.dart';
+>>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -12,6 +21,24 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+<<<<<<< HEAD
+=======
+  Preferences preferences =Preferences();
+  Users usersData =Users();
+  var userData;
+
+
+  Future getUsers() async {
+    userData = await usersData.getData();
+    print(userData);
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUsers();
+  }
+>>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
   final Style style = Style();
   var emailVal;
   bool _isObscure=true;
@@ -41,8 +68,8 @@ class _LoginState extends State<Login> {
                     ),
                     Text('Best friend in cleanliness',
                       style: TextStyle(
-                          color: Color(0xffdcd6d6),
-                          fontFamily: 'Montserrat',
+                        color: Color(0xffdcd6d6),
+                        fontFamily: 'Montserrat',
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                         height: 1.5,
@@ -170,10 +197,53 @@ class _LoginState extends State<Login> {
                             return ;
                           }
                           else{
+<<<<<<< HEAD
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) =>  VerificationLogin(emailVal)),
                             );
+=======
+                            //print(emailVal);
+                            //print(passVal);
+                            for(var user in userData){
+                              if(user['email'] == emailVal) {
+                                if (user['username'] == passVal) {
+                                  print(user['username']);
+                                  String name = user['name'];
+                                  String username = user['username'];
+                                  print(username);
+                                  Map<String,String> userMap ={
+                                    'Name': name,
+                                    'username': username,
+                                  };
+                                  preferences.savePreference(user);
+                                  // print(preferences.getName());
+                                  // Element.pre()
+                                  // print(preferences.userMap['Name']);
+                                  // print(userMap['name']);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            VerificationLogin(emailVal)),
+                                  );
+                                }
+                              } else{
+                                Alert(context: context,
+                                  title: "Error!",
+                                  desc:'Password or Email is invalid',
+                                  buttons:[
+                                    DialogButton(
+                                      color:Color(style.primaryPink),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('Ok'),
+                                    ),
+                                  ] ,).show();
+                              }
+                            }
+>>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
                           }
                         },
 

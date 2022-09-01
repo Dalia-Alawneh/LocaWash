@@ -1,11 +1,22 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:locawash/IntrodPage/Intro.dart';
+<<<<<<< HEAD:lib/HomePage/main.dart
 import 'package:locawash/style.dart';
 void main() {
   runApp( MyApp());
 }
 
+=======
+import 'package:locawash/Login/Login.dart';
+import 'package:locawash/style.dart';
+import 'package:locawash/HomePage/MainHome.dart';
+
+
+void main() {
+  runApp( MyApp());
+}
+>>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b:lib/main.dart
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
@@ -14,7 +25,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
+<<<<<<< HEAD:lib/HomePage/main.dart
       home: SplashScreen(),
+=======
+      home: Login(),
+>>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b:lib/main.dart
     );
   }
 }
