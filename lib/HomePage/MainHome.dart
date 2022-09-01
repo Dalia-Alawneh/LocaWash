@@ -207,12 +207,9 @@ class _MainHomeState extends State<MainHome> {
                                         ),)
                                     ],
                                   )
-
-
                                 ],
                               ),
                             ),
-
                           ],
                         ),
                       )

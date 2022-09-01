@@ -1,10 +1,9 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'style.dart';
+import '../style.dart';
+
 const Color bgColor = Color(0xfff5f3f3);
 
 class ChangePhotoAlert extends StatefulWidget {

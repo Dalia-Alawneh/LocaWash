@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   void _getData() async {
     _userModel = (await apiService().getUsers())!.cast<UserModel>();
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
   Widget build(BuildContext context) {
     return  SafeArea(
@@ -41,14 +41,14 @@ class _ProfilePageState extends State<ProfilePage> {
             radius: 50,
             ),
             SizedBox(height: 15,),
-            Text(_userModel![index+3].username, style: TextStyle(
+            Text(_userModel!.first.username, style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',
             ),),
             SizedBox(height: 5,),
 
-            Text(_userModel![index+3].email, style: TextStyle(
+            Text(_userModel!.first.email, style: TextStyle(
             fontSize: 12.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',

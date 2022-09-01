@@ -1,12 +1,7 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
-import 'package:locawash/Intro.dart';
-import 'package:locawash/Register.dart';
+import 'package:locawash/IntrodPage/Intro.dart';
 import 'package:locawash/style.dart';
-import 'Home.dart';
-import 'MainHome.dart';
 void main() {
   runApp( MyApp());
 }
@@ -19,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
-      home: MainHome(),
+      home: SplashScreen(),
     );
   }
 }

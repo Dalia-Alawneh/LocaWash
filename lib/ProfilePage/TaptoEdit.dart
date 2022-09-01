@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/ChangeProfilePhoto/ChangePhotoAlert.dart';
 import 'package:locawash/ProfilePage/profile_page.dart';
 import 'api_service.dart';
 import 'textfield_widget.dart';
@@ -7,7 +8,6 @@ import 'package:locawash/ProfilePage/user_desc.dart';
 import 'package:locawash/ProfilePage/user.dart';
 import 'package:locawash/ProfilePage/userModelFromJson.dart';
 import 'package:locawash/ProfilePage/api_service.dart';
-// import 'package:locawash/ProfilePage/user.dart';
 
 
 class TaptoEdit extends StatefulWidget {
@@ -28,7 +28,7 @@ class _TaptoEditState extends State<TaptoEdit> {
 
   void _getData() async {
     _userModel = (await apiService().getUsers())!.cast<UserModel>();
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
   Widget build(BuildContext context) {
@@ -57,9 +57,9 @@ class _TaptoEditState extends State<TaptoEdit> {
                               right: -25,
                               child: RawMaterialButton(
                                 onPressed: () {
-                                  // Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  //   return ChangePic();
-                                  // }));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                                    return ChangePhotoAlert();
+                                  }));
                                 },
                                 fillColor: Color(0xFFEB1555),
                                 child: Icon(Icons.edit, color: Colors.white,size: 20,),

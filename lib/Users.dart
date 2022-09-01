@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 const String UserApi = 'https://jsonplaceholder.typicode.com/users';
 const String MyApi = 'https://localhost:8080/api/';

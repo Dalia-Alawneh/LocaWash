@@ -36,7 +36,7 @@ class _editProfileState extends State<editProfile> {
 
   void _getData() async {
     _userModel = (await apiService().getUsers())!.cast<UserModel>();
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
+    Future.delayed(const Duration(seconds: 0)).then((value) => setState(() {}));
   }
 
   Widget build(BuildContext context) {

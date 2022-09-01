@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/ForgotPassword.dart';
+import 'package:locawash/Password/ForgotPassword.dart';
 import 'package:locawash/Register.dart';
-import 'package:locawash/VerificationLogin.dart';
-import 'style.dart';
+import 'package:locawash/Login/VerificationLogin.dart';
+import 'package:locawash/style.dart';
+
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 

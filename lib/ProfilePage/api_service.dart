@@ -20,5 +20,6 @@ class apiService {
     catch (e) {
       log(e.toString());
     }
+    return null;
   }
 }
