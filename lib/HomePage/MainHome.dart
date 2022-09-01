@@ -1,43 +1,175 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:locawash/AppBar.dart';
 import 'package:locawash/Style.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'userModelFromJson.dart';
-import 'api_service.dart';
-
+import 'package:locawash/Photos.dart';
+import 'package:locawash/Users.dart';
 class MainHome extends StatefulWidget {
+  const MainHome({Key? key}) : super(key: key);
 
   @override
   State<MainHome> createState() => _MainHomeState();
 }
 
 class _MainHomeState extends State<MainHome> {
-  late List<UserModel>? _userModel = [];
-
   Style style =Style();
   int homeColor= 0xffd0cfcf;
+  Photos photosData = Photos();
+  Users usersData = Users();
+  String photoLink='';
+  var  photoData;
+  var userData;
+  Future getPhotos() async{
+    photoData = await photosData.getData();
+    print(photoData);
+  }
   @override
-  void initState() {
+  void initState(){
     super.initState();
-    _getData();
+    // getPhotos();
+    getItems();
+    // getUsers();
   }
 
-  void _getData() async {
-    _userModel = (await apiService().getUsers())!;
-    Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
-  }
+  // Future getUsers() async {
+  //   userData = await usersData.getData();
+  //   print(userData);
+  // }
+  List<Widget> MYLIST=[];
+  Future<void> getItems() async{
+    photoData = await photosData.getData();
+    print(photoData);
+    Widget item = Container();
+    List<Widget> listItems = [];
+    for(var photo in photoData) {
+      item = Expanded(
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Color(0xffffffff),
+              boxShadow: [
+                BoxShadow(
+                    color: Color(0xffb4b2b2),
+                    blurRadius: 25,
+                    offset: Offset(0, 10)
+                )
+              ]
+          ),
+          child: Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .width / 3,
+                    width: double.infinity,
+                    margin: EdgeInsets.only(bottom: 5),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xffd0cfcf)
+                    ),
 
+                    child: Stack(
+                      children: [
+
+                        Image.network(
+                          photo['thumbnailUrl'],
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                          // alignment: Alignment.centerRight,
+
+                        ),
+                        Positioned(
+                          top: 5,
+                          left: 170,
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 2, horizontal: 5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20)
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(Icons.star,
+                                  size: 18,
+                                  color: Color(style.primaryPink),
+                                ),
+                                Text('4.5',
+                                  style: TextStyle(
+                                      color: Color(style.primaryPink)
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+
+                    )
+                ),
+                Text('Service',
+                    style: TextStyle(
+                        color: Color(style.primaryPink))
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Text(photo['title'],
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        height: 1.5
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(Icons.person,
+                            size: 20,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text('5 / 20')
+                        ],
+                      ),
+                    ),
+                    Text("\$15,00",
+                      style: TextStyle(
+                        color: Color(style.primaryPink),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      );
+      listItems.add(item);
+      MYLIST = listItems;
+    }
+  }
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
           bottomNavigationBar: AppBarCustom(),
           body: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             child: ListView(
               children: [
                 Expanded(
-                  flex: 1,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -58,7 +190,7 @@ class _MainHomeState extends State<MainHome> {
                               SizedBox(
                                 height: 7,
                               ),
-                              Text(_userModel![3].username, style: TextStyle(
+                              Text('Adrew Colla', style: TextStyle(
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Montserrat',
@@ -87,8 +219,8 @@ class _MainHomeState extends State<MainHome> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Color(0xffeeeded),
-                    borderRadius: BorderRadius.circular(25),
+                      color: Color(0xffeeeded),
+                      borderRadius: BorderRadius.circular(25),
                       boxShadow:[
                         BoxShadow(
                             color: Color(0xffb4b2b2),
@@ -133,23 +265,23 @@ class _MainHomeState extends State<MainHome> {
                               ),
                             ),
                             Icon(
-                                Icons.alarm,
-                                color: Color(0xff8871E6),
+                              Icons.alarm,
+                              color: Color(0xff8871E6),
                             ),
                             Container(
                               margin: EdgeInsets.only(left: 10),
                               width: 30,
                               height: 20,
                               decoration: BoxDecoration(
-                                color: Color(style.primaryBlue),
-                                borderRadius: BorderRadius.circular(20)
+                                  color: Color(style.primaryBlue),
+                                  borderRadius: BorderRadius.circular(20)
                               ),
                               child: Center(child: Text('5',
-                              style: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffffffff)
-                              ),
+                                style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xffffffff)
+                                ),
                               )),
                             )
 
@@ -159,10 +291,10 @@ class _MainHomeState extends State<MainHome> {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color(0xff8871E6),
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(25),
-                              bottomRight: Radius.circular(25))
+                            color: Color(0xff8871E6),
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(25),
+                                bottomRight: Radius.circular(25))
                         ),
                         padding: EdgeInsets.all(10),
 
@@ -235,337 +367,197 @@ class _MainHomeState extends State<MainHome> {
                   ),
                 ),
                 Text('Preferred Service',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xff333333),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xff333333),
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Montserrat',
+                  ),
                 ),
+                CarouselSlider(
+                  // carouselController: CarouselController(
+                  //
+                  // ),
+                    items:MYLIST,
+                    options: CarouselOptions(
+                        height: MediaQuery.of(context).size.height/2.7
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 25 , bottom: 30),
+                  child: Text('Favorite Product',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Color(0xff333333),
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                    ),
+                  ),
                 ),
-                CarouselSlider(items: [
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xffffffff),
-                            boxShadow:[
-                              BoxShadow(
-                                  color: Color(0xffb4b2b2),
-                                  blurRadius: 25,
-                                  offset: Offset(0,10)
-                              )
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: GestureDetector(
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 80,
+                                width: 80,
+                                margin: EdgeInsets.only(right: 15),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(homeColor)
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Zulio Car Oil',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat',
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text('Car Engine Oil',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xff6c6b6b),
+                                    ),
+                                  ),
+                                ],
+                              ),
+
                             ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Positioned(
-                            //
-
-                            //   ),
-                            // ),
-                            Container(
-                              height: 120,
-                              width: double.infinity,
-                              margin: EdgeInsets.only(bottom: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xffd0cfcf)
-                              ),
-
-                                child: Container(
-                                  alignment: Alignment.topRight,
-                                  child: Stack(
-                                    children: [
-                                            Image.asset('images/pexels-brett-sayles-1322185.jpg',),
-                                      Positioned(
-                                        top: 5,
-                                        left: 130,
-                                        child: Container(
-                                          color: Colors.white,
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.end,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Icon(Icons.star,
-                                                size: 18,
-                                                color: Color(style.primaryPink),
-                                              ),
-                                              Text('4.5',
-                                                style: TextStyle(
-                                                    color: Color(style.primaryPink)
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-
-                                  ),
-                                )
-                            ),
-                            Text('Service',
-                                style: TextStyle(
-                                    color: Color(style.primaryPink))
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Premium Car Wash',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.person,
-                                        size: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text('5 / 20')
-                                    ],
-                                  ),
-                                ),
-                                Text("\$15,00",
-                                  style: TextStyle(
-                                    color: Color(style.primaryPink),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0xffffffff),
-                            boxShadow:[
-                              BoxShadow(
-                                  color: Color(0xffb4b2b2),
-                                  blurRadius: 25,
-                                  offset: Offset(0,10)
-                              )
-                            ]
+                      Text("\$22.5",
+                        style: TextStyle(
+                          color: Color(style.primaryPink),
+                          fontWeight: FontWeight.bold,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 120,
-                              margin: EdgeInsets.only(bottom: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Color(0xffd0cfcf)
-                              ),
-                                child: Container(
-                                  alignment: Alignment.topRight,
-                                  child: Stack(
-                                    children: [
-                                      Image.asset('images/pexels-brett-sayles-1322185.jpg',),
-
-                                     Positioned(
-                                      top: 5,
-                                      left: 130,
-                                      child: Container(
-                                        color: Colors.white,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Icon(Icons.star,
-                                              size: 18,
-                                              color: Color(style.primaryPink),
-                                            ),
-                                            Text('4.5',
-                                              style: TextStyle(
-                                                  color: Color(style.primaryPink)
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],),)
-                            ),
-                            Text('Service',
-                                style: TextStyle(
-                                    color: Color(style.primaryPink))
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text('Premium Carpet Wash',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      Icon(Icons.person,
-                                        size: 20,
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text('5 / 30')
-                                    ],
-                                  ),
-                                ),
-                                Text("\$13,00",
-                                  style: TextStyle(
-                                    color: Color(style.primaryPink),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ], options: CarouselOptions(
-                    height: MediaQuery.of(context).size.height/3.2
-                  )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 25 , bottom: 30),
-                    child: Text('Favorite Product',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xff333333),
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Montserrat',
-                      ),
-                    ),
+                      )
+                    ],
                   ),
+                ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: GestureDetector(
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 80,
-                                  width: 80,
-                                  margin: EdgeInsets.only(right: 15),
-                                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.symmetric(horizontal:10 ,vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: GestureDetector(
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 80,
+                                width: 80,
+                                margin: EdgeInsets.only(right: 15),
+                                decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Color(homeColor)
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Zulio Car Oil',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat',
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Zulio Car Oil',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat',
-                                      ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text('Car Engine Oil',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xff6c6b6b),
                                     ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text('Car Engine Oil',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff6c6b6b),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-
-                              ],
-                            ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                        Text("\$22.5",
-                          style: TextStyle(
-                            color: Color(style.primaryPink),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+
+                      Text("\$22.5",
+                        style: TextStyle(
+                          color: Color(style.primaryPink),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
                   ),
+                ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:10 ,vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: GestureDetector(
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 80,
-                                  width: 80,
-                                  margin: EdgeInsets.only(right: 15),
-                                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.symmetric(horizontal:10 ,vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: GestureDetector(
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 80,
+                                width: 80,
+                                margin: EdgeInsets.only(right: 15),
+                                decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: Color(homeColor)
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Zulio Car Oil',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat',
+                                    ),
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Zulio Car Oil',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat',
-                                      ),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text('Car Engine Oil',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xff6c6b6b),
                                     ),
-                                    SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text('Car Engine Oil',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff6c6b6b),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
+                              ),
 
-                              ],
-                            ),
+                            ],
                           ),
                         ),
-                        Text("\$22.5",
-                          style: TextStyle(
-                            color: Color(style.primaryPink),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
+                      ),
+                      Text("\$22.5",
+                        style: TextStyle(
+                          color: Color(style.primaryPink),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
                   ),
+                ),
               ],
             ),
           ),

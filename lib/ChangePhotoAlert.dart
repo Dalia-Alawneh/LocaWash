@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:locawash/Preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'style.dart';
 const Color bgColor = Color(0xfff5f3f3);
 
@@ -16,6 +18,7 @@ class ChangePhotoAlert extends StatefulWidget {
 
 class _ChangePhotoAlertState extends State<ChangePhotoAlert> {
   Style style = Style();
+  Preferences preferences = Preferences();
   File? imageFile;
   @override
   Widget build(BuildContext context) {
@@ -46,20 +49,21 @@ class _ChangePhotoAlertState extends State<ChangePhotoAlert> {
                     color: bgColor,
                     thickness: 2.2,
                   ),
-                  if(imageFile != null)
-                      Container(
-                        width: 100,
-                        height: 100,
-                        margin: EdgeInsets.only(bottom: 20),
-                        padding: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(image: FileImage(imageFile!))
-                        ),
-                      ),
-                  ReusableListTile(text: 'Take a photo',
+                  // if(imageFile != null)
+                  //   Container(
+                  //       width: 100,
+                  //       height: 100,
+                  //       margin: EdgeInsets.only(bottom: 20),
+                  //       padding: EdgeInsets.all(15),
+                  //       decoration: BoxDecoration(
+                  //           image: DecorationImage(image: FileImage(imageFile!))
+                  //       ),
+                  //     ),
+                ReusableListTile(text: 'Take a photo',
                   icon: Icons.camera_alt,
                     ontap: (){
                     getImage(source: ImageSource.camera);
+                    // preferences.setString('Image', ImageFile);
                     },
                   ),
                   SizedBox(
@@ -90,7 +94,9 @@ class _ChangePhotoAlertState extends State<ChangePhotoAlert> {
                         fontWeight: FontWeight.bold
                       ),),
                       onTap: (){
-
+                        preferences.delete();
+                        // getImage(source: ImagePicker().));
+                        //  imageFile?.path = 'images/dafaultimg.jpg';
                       },
                     ),
                   )
@@ -112,7 +118,9 @@ class _ChangePhotoAlertState extends State<ChangePhotoAlert> {
     if(file?.path != null){
       setState(() {
         imageFile = File(file!.path);
+        preferences.saveImage(imageFile?.path.toString());
       });
+      print(imageFile?.path);
     }
   }
 }

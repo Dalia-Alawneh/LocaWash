@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:locawash/IntrodPage/Intro.dart';
+import 'package:locawash/Login/Login.dart';
 import 'package:locawash/style.dart';
-import 'MainHome.dart';
+import 'package:locawash/HomePage/MainHome.dart';
 
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
-      home: MainHome(),
+      home: Login(),
     );
   }
 }

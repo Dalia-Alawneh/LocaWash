@@ -1,5 +1,11 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:locawash/AdvancedAlert.dart';
+import 'package:locawash/Preferences.dart';
 import 'package:locawash/ProfilePage/profile_page.dart';
+import '../ChangePhotoAlert.dart';
 import 'api_service.dart';
 import 'textfield_widget.dart';
 import 'user.dart';
@@ -25,6 +31,7 @@ class _TaptoEditState extends State<TaptoEdit> {
     super.initState();
     _getData();
   }
+  Preferences preferences =Preferences();
 
   void _getData() async {
     _userModel = (await apiService().getUsers())!.cast<UserModel>();
@@ -48,18 +55,30 @@ class _TaptoEditState extends State<TaptoEdit> {
                     Stack(
 
                         children:[
-                          CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            radius: 50,
+                          InkWell(
+                            child: CircleAvatar(
+                              child: ClipOval(
+                                child:
+                                (preferences.getImage()!=null)
+                                    ?Image.file(
+                                  File(preferences.getImage()
+                                  ),
+                                  fit: BoxFit.fill,
+                                )
+                                    :Image.asset('images/default.jpg'),
+                              ),
+                              backgroundColor: Colors.grey,
+                              radius: 50,
+                            ),
                           ),
                           Positioned(
                               bottom: 0,
                               right: -25,
                               child: RawMaterialButton(
                                 onPressed: () {
-                                  // Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  //   return ChangePic();
-                                  // }));
+                                   showDialog(context: context, builder: (context){
+                                  return ChangePhotoAlert();
+                                  });
                                 },
                                 fillColor: Color(0xFFEB1555),
                                 child: Icon(Icons.edit, color: Colors.white,size: 20,),
@@ -74,7 +93,7 @@ class _TaptoEditState extends State<TaptoEdit> {
                         Padding(
                           padding: EdgeInsets.only(left: 20,right: 20 , top: 20),
                           child:
-                          TextFieldWidget(label: 'User Name', text: _userModel![index+3].username, onChanged: (username){}
+                          TextFieldWidget(label: 'User Name', text: preferences.getUsername(), onChanged: (username){}
                           ,isEnabled: true),
                         ),
                       ],
@@ -85,7 +104,7 @@ class _TaptoEditState extends State<TaptoEdit> {
                           Padding(
                             padding: EdgeInsets.only(left: 20,right: 20 , top: 20),
                             child:
-                            TextFieldWidget(label: 'Email', text: _userModel![index+3].email, onChanged: (email){}
+                            TextFieldWidget(label: 'Email', text: preferences.getEmail(), onChanged: (email){}
                             ,isEnabled: true,),
                           ),
                         ]
@@ -117,10 +136,17 @@ class _TaptoEditState extends State<TaptoEdit> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context) {
-                            return ProfilePage();
-                          }));
+                         showDialog(context: context, builder: (context){
+                           return AdvancedAlert(head: 'Profile has been updated',
+                               desc: "Ullamcorper imperdiet urna id non sedest sem. Rhoncus amet, enim purusgravida done aliquet.",
+                               onPressedCustom: (){
+                             Navigator.push(context, MaterialPageRoute(builder: (context){
+                               return ProfilePage();
+                             }));
+                               },
+                             icon: Icons.person_pin_outlined,
+                           );
+                         });
                         },
                         child: Container(
                           decoration: BoxDecoration(

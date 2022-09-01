@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:locawash/ChangePhotoAlert.dart';
+import 'package:locawash/Preferences.dart';
 import 'package:locawash/ProfilePage/TaptoEdit.dart';
 import 'package:locawash/ProfilePage/user_desc.dart';
 import 'package:locawash/ProfilePage/userModelFromJson.dart';
@@ -26,6 +30,8 @@ class _editProfileState extends State<editProfile> {
   // }
 
   late List<UserModel>? _userModel = [];
+  ChangePhotoAlert changePhotoAlert = ChangePhotoAlert();
+  Preferences preferences= Preferences();
 
   @override
   void initState() {
@@ -78,19 +84,26 @@ class _editProfileState extends State<editProfile> {
                     ),
                     Stack(
                       children:[
-                        CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          radius: 50,
+                        InkWell(
+                          child: CircleAvatar(
+                            child: ClipOval(
+                                child: (preferences.getImage()!=null)
+                                 ?Image.file(
+                                 File(preferences.getImage()
+                                 ),
+                                  fit: BoxFit.cover,
+                                )
+                                 :Image.asset('images/default.jpg'),
+                            ),
+                            backgroundColor: Colors.grey,
+                            radius: 50,
+                          ),
                         ),
                         Positioned(
                             bottom: 0,
                             right: -25,
                             child: RawMaterialButton(
                               onPressed: null,
-                                // Navigator.push(context, MaterialPageRoute(builder: (context){
-                                //   return ChangePic();
-                                // }));
-
                               fillColor: Color(0xFFEB1555),
                               child: Icon(Icons.edit, color: Colors.white,size: 20,),
                               shape: CircleBorder(),
@@ -106,7 +119,7 @@ class _editProfileState extends State<editProfile> {
                           Padding(
                             padding: EdgeInsets.only(left: 20,right: 20 , top: 20),
                             child:
-                          TextFieldWidget(label: 'User Name', text: _userModel![index+3].username, onChanged: (username){}
+                          TextFieldWidget(label: 'User Name', text: preferences.getUsername(), onChanged: (username){}
                           ,isEnabled: false,),
                           ),
                         ],
@@ -119,7 +132,7 @@ class _editProfileState extends State<editProfile> {
                         Padding(
                           padding: EdgeInsets.only(left: 20,right: 20 , top: 20),
                           child:
-                          TextFieldWidget(label: 'Email', text: _userModel![index+3].email, onChanged: (email){}
+                          TextFieldWidget(label: 'Email', text: preferences.getEmail(), onChanged: (email){}
                           ,isEnabled: false),
                         ),
             ]
@@ -154,7 +167,11 @@ class _editProfileState extends State<editProfile> {
                     ),
 
                     GestureDetector(
-                        onTap: null,
+                        onTap: (){
+                           showDialog(context: context, builder: (context){
+                           return ChangePhotoAlert();
+                          });
+                       },
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),

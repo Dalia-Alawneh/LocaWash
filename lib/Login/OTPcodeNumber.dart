@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:locawash/AdvancedAlert.dart';
 import '../style.dart';
@@ -119,7 +120,8 @@ class _OTPcodeNumberState extends State<OTPcodeNumber> {
                               onPressedCustom:(){
                                 Navigator.push(context, MaterialPageRoute(builder: (context)=>OtpScreeen()));
                               },
-                            icon: Icons.send,
+                            icon:CupertinoIcons.paperplane_fill
+                            ,
                           );
                         });
                   }

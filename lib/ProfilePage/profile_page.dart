@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:locawash/Login/Login.dart';
+import 'package:locawash/Preferences.dart';
 import 'package:locawash/ProfilePage/edit_profile.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:locawash/AppBar.dart';
+import '../ChangePhotoAlert.dart';
 import 'api_service.dart';
 import 'package:locawash/ProfilePage/userModelFromJson.dart';
 class ProfilePage extends StatefulWidget {
@@ -17,7 +21,8 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _getData();
   }
-
+  Preferences preferences =Preferences();
+  Map<dynamic, dynamic> user = Preferences().userMap;
   void _getData() async {
     _userModel = (await apiService().getUsers())!.cast<UserModel>();
     Future.delayed(const Duration(seconds: 1)).then((value) => setState(() {}));
@@ -37,18 +42,26 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 50,
             ),
             CircleAvatar(
+              child: ClipOval(
+                child: (preferences.getImage()!=null)
+                    ?Image.file(
+                    File(preferences.getImage()
+                      ),
+                      fit: BoxFit.fitWidth,)
+                    :Image.asset('images/default.jpg'),
+              ),
             backgroundColor: Colors.grey,
             radius: 50,
             ),
             SizedBox(height: 15,),
-            Text(_userModel![index+3].username, style: TextStyle(
+            Text(preferences.getName(), style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',
             ),),
             SizedBox(height: 5,),
 
-            Text(_userModel![index+3].email, style: TextStyle(
+            Text(preferences.getUsername(), style: TextStyle(
             fontSize: 12.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',
@@ -70,6 +83,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                     child: ListTile(
                       onTap: (){
+
                         Navigator.push(context, MaterialPageRoute(builder: (context){
                           return editProfile();
                         }));
