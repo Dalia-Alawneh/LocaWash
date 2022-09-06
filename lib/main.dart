@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:locawash/HomePage/checkout.dart';
 import 'package:locawash/IntrodPage/Intro.dart';
 import 'package:locawash/Login/Login.dart';
 import 'package:locawash/style.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // fontFamily: 'Montserrat',
       ),
-      home: Login(),
+      home: Checkout(),
     );
   }
 }
