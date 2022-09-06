@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locawash/HomePage/MainHome.dart';
+import 'package:locawash/MainHome.dart';
 import 'package:locawash/ProfilePage/profile_page.dart';
 
 void OtpScreen() {

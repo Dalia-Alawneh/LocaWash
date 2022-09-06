@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:locawash/ProductBag.dart';
 import 'package:locawash/Style.dart';
 import 'package:locawash/ProfilePage/apiUsers.dart';
 import 'package:locawash/ProfilePage/profile_page.dart';
-import 'HomePage/MainHome.dart';
+import 'MainHome.dart';
 
 class AppBarCustom extends StatefulWidget {
   @override
@@ -71,6 +72,9 @@ class _AppBarCustomState extends State<AppBarCustom> {
                       ),
                       onPressed: (){
                         setState((){
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return ProductBag();
+                          }));
                           mainColorBag = Color(style.primaryPink);
                         });
                       },

@@ -1,12 +1,11 @@
 import 'dart:io';
-
+import 'package:locawash/ChangeProfilePhoto/ChangePhotoAlert.dart';
 import 'package:flutter/material.dart';
 import 'package:locawash/Login/Login.dart';
 import 'package:locawash/Preferences.dart';
 import 'package:locawash/ProfilePage/edit_profile.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:locawash/AppBar.dart';
-import '../ChangePhotoAlert.dart';
 import 'api_service.dart';
 import 'package:locawash/ProfilePage/userModelFromJson.dart';
 class ProfilePage extends StatefulWidget {
@@ -54,22 +53,14 @@ class _ProfilePageState extends State<ProfilePage> {
             radius: 50,
             ),
             SizedBox(height: 15,),
-<<<<<<< HEAD
-            Text(_userModel!.first.username, style: TextStyle(
-=======
             Text(preferences.getName(), style: TextStyle(
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',
             ),),
             SizedBox(height: 5,),
 
-<<<<<<< HEAD
-            Text(_userModel!.first.email, style: TextStyle(
-=======
             Text(preferences.getUsername(), style: TextStyle(
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
             fontSize: 12.0,
             fontWeight: FontWeight.bold,
             fontFamily: 'Montserrat',

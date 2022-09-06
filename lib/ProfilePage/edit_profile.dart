@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:locawash/ChangePhotoAlert.dart';
+import 'package:locawash/ChangeProfilePhoto/ChangePhotoAlert.dart';
 import 'package:locawash/Preferences.dart';
 import 'package:locawash/ProfilePage/TaptoEdit.dart';
 import 'package:locawash/ProfilePage/user_desc.dart';

@@ -2,14 +2,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-<<<<<<< HEAD:lib/ChangeProfilePhoto/ChangePhotoAlert.dart
 import '../style.dart';
-
-=======
 import 'package:locawash/Preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'style.dart';
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b:lib/ChangePhotoAlert.dart
 const Color bgColor = Color(0xfff5f3f3);
 
 class ChangePhotoAlert extends StatefulWidget {

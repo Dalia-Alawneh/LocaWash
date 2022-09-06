@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/Password/ForgotPassword.dart';
-<<<<<<< HEAD
 import 'package:locawash/Register.dart';
 import 'package:locawash/Login/VerificationLogin.dart';
 import 'package:locawash/style.dart';
-
-=======
 import 'package:locawash/Preferences.dart';
 import 'package:locawash/Register.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:locawash/Login/VerificationLogin.dart';
 import 'package:locawash/Users.dart';
 import 'package:locawash/style.dart';
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -21,8 +17,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-<<<<<<< HEAD
-=======
   Preferences preferences =Preferences();
   Users usersData =Users();
   var userData;
@@ -38,9 +32,8 @@ class _LoginState extends State<Login> {
     super.initState();
     getUsers();
   }
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
   final Style style = Style();
-  var emailVal;
+  var emailVal, passVal;
   bool _isObscure=true;
   final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
   @override
@@ -197,12 +190,10 @@ class _LoginState extends State<Login> {
                             return ;
                           }
                           else{
-<<<<<<< HEAD
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) =>  VerificationLogin(emailVal)),
                             );
-=======
                             //print(emailVal);
                             //print(passVal);
                             for(var user in userData){
@@ -243,7 +234,6 @@ class _LoginState extends State<Login> {
                                   ] ,).show();
                               }
                             }
->>>>>>> 337531d6a0d8783363fbef9d2e070e82bc30654b
                           }
                         },
 
