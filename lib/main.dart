@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:locawash/HomePage/checkout.dart';
 import 'package:locawash/IntrodPage/Intro.dart';
 import 'package:locawash/style.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         // fontFamily: 'Montserrat',
       ),
       home: SplashScreen(),
+
     );
   }
 }

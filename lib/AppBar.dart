@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locawash/ProductBag.dart';
 import 'package:locawash/Style.dart';
-import 'package:locawash/ProfilePage/apiUsers.dart';
 import 'package:locawash/ProfilePage/profile_page.dart';
 import 'MainHome.dart';
 
@@ -54,16 +53,8 @@ class _AppBarCustomState extends State<AppBarCustom> {
                         color: mainColorTime,
                       ),
                       onPressed: (){
-                        setState((){
-                          mainColorTime = Color(style.primaryPink);
-                        });
-                        Navigator.push(context, MaterialPageRoute(builder: (context){
-                          return apiUsers();
-                        }));
                       },
-
                     )
-
                 ),
                 Expanded(
                     child:IconButton(

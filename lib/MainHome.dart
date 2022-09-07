@@ -21,10 +21,7 @@ class _MainHomeState extends State<MainHome> {
   String photoLink='';
   var  photoData;
   var userData;
-  Future getPhotos() async{
-    photoData = await photosData.getData();
-    print(photoData);
-  }
+
   @override
   void initState(){
     super.initState();

@@ -4,11 +4,10 @@ import 'package:locawash/Register.dart';
 import 'package:locawash/Login/VerificationLogin.dart';
 import 'package:locawash/style.dart';
 import 'package:locawash/Preferences.dart';
-import 'package:locawash/Register.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:locawash/Login/VerificationLogin.dart';
 import 'package:locawash/Users.dart';
-import 'package:locawash/style.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 class Login extends StatefulWidget {
   Login({key}) : super(key: key);
 
@@ -185,7 +184,8 @@ class _LoginState extends State<Login> {
                         style: TextButton.styleFrom(
                             padding: EdgeInsets.symmetric(vertical: 10,horizontal: 100)
                         ),
-                        onPressed: (){
+                        onPressed: ()  {
+
                           if(!_formKey.currentState!.validate()){
                             return ;
                           }
